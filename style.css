@@ -1,0 +1,149 @@
+body {
+  font-family: "Afacad Flux", sans-serif;
+  text-align: center;
+}
+
+.btn-custom {
+  background-color: rgb(255, 255, 255); /* Custom background color */
+  color: rgb(0, 0, 0); /* Text color */
+  border-width: 1.75px;
+  border-color: rgb(122, 255, 122);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-custom:hover {
+  background-color: rgb(122, 255, 122); /* Slightly lighter shade on hover */
+  color: black !important;
+  transform: scale(1.05); /* Optional: Add a slight scaling effect */
+  border-color: rgb(122, 255, 122) !important;
+}
+.btn-custom:active {
+  background-color: rgb(122, 255, 122) !important;
+  color: rgb(0, 0, 0) !important;
+  transform: scale(1.1);
+  border-color: rgb(122, 255, 122) !important;
+}
+
+.btn-custom:focus {
+  background-color: rgb(122, 255, 122); /* Slightly lighter shade on hover */
+  color: black !important;
+  transform: scale(1.05); /* Optional: Add a slight scaling effect */
+  border-color: rgb(122, 255, 122) !important;
+}
+.navbar-brand {
+  font-size: 30px;
+  margin-top: 0;
+}
+.custom-navbar {
+  padding-left: 300px;
+  padding-right: 300px;
+  background-color: white;
+}
+
+@media (max-width: 1400px) {
+  .custom-navbar {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .custom-navbar {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+
+@media (max-width: 992px) {
+  .custom-navbar {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-navbar {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .img {
+    width: fit-content;
+    height: fit-content;
+  }
+}
+
+.img {
+  width: 37.5vw;
+  height: 25.5vw;
+  border-radius: 5vw;
+}
+
+.heading {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  font-weight: 600;
+}
+
+.main-container {
+  margin-bottom: 100px;
+}
+
+.center-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-div {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.btn-brand {
+  width: 250px;
+  height: 75px;
+  border-radius: 10px;
+  background-color: rgb(122, 255, 122); /* Custom background color */
+  color: rgb(0, 0, 0); /* Text color */
+  border-width: 1.75px;
+  border-color: rgb(122, 255, 122);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-brand:hover {
+  background-color: rgb(122, 255, 122); /* Slightly lighter shade on hover */
+  color: black !important;
+  transform: scale(1.05); /* Optional: Add a slight scaling effect */
+  border-color: rgb(122, 255, 122) !important;
+}
+.btn-brand:active {
+  background-color: rgb(122, 255, 122) !important;
+  color: rgb(0, 0, 0) !important;
+  transform: scale(1.1);
+  border-color: rgb(122, 255, 122) !important;
+}
+
+.btn-brand:focus {
+  background-color: rgb(122, 255, 122); /* Slightly lighter shade on hover */
+  color: black !important;
+  transform: scale(1.05); /* Optional: Add a slight scaling effect */
+  border-color: rgb(122, 255, 122) !important;
+}
+
+#moreinfo {
+  width: fill;
+  height: 400px;
+  background-color: rgb(122, 255, 122);
+  margin-bottom: 100px;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 30vw;
+  height: 20vw;
+  border-radius: 20px;
+}

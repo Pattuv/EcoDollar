@@ -21,49 +21,12 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <style>
-      body {
-        font-family: "Afacad Flux", sans-serif;
-      }
-      .title {
-        font-size: 20px;
-      }
-      header {
-        background-color: aqua;
-        border-color: black;
-        height: 55px;
-      }
-      .btn-custom {
-        background-color: rgb(255, 255, 255); /* Custom background color */
-        color: rgb(0, 0, 0); /* Text color */
-        border-width: 1px;
-        border-color: rgb(122, 255, 122);
-        transition: background-color 0.3s ease, transform 0.2s ease;
-      }
-      .btn-custom:hover {
-        background-color: rgb(
-          122,
-          255,
-          122
-        ); /* Slightly lighter shade on hover */
-        color: black !important;
-        transform: scale(1.05); /* Optional: Add a slight scaling effect */
-        border-color: rgb(122, 255, 122) !important;
-      }
-      .btn-custom:active {
-        background-color: rgb(122, 255, 122) !important;
-        color: rgb(0, 0, 0) !important;
-        transform: scale(1.1);
-        border-color: rgb(122, 255, 122) !important;
-      }
-      .navbar-brand {
-        font-size: 30px;
-        margin-top: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-md bg-body-primary">
+    <nav
+      class="navbar navbar-expand-sm bg-body-primary custom-navbar fixed-top"
+    >
       <div class="container-fluid">
         <a class="navbar-brand" href="#">EcoDollar</a>
         <button
@@ -99,5 +62,31 @@
         </div>
       </div>
     </nav>
+
+    <h1 class="display-4 heading">Recycle, now you've got a reason to.</h1>
+
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <img
+            class="img"
+            src="https://www.conserve-energy-future.com/wp-content/uploads/2013/01/waste-recycling-symbol-recyclable-materials.jpg"
+            alt="no image found ☹️"
+          />
+        </div>
+
+        <div
+          class="col-md-6 col-12 container d-flex flex-column justify-content-center align-items-center"
+        >
+          <p class="fs-2 subheading mb-4">
+            Earn rewards for recycling. Recycle actively and efficiently for
+            your community.
+          </p>
+          <button class="btn btn-primary btn-brand">
+            <label for="" class="fs-5">Get Started</label>
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
