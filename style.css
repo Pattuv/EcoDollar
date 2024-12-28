@@ -4,16 +4,16 @@ body {
 }
 
 .btn-custom {
-  background-color: rgb(255, 255, 255); /* Custom background color */
-  color: rgb(0, 0, 0); /* Text color */
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   border-width: 1.75px;
   border-color: rgb(122, 255, 122);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .btn-custom:hover {
-  background-color: rgb(122, 255, 122); /* Slightly lighter shade on hover */
+  background-color: rgb(122, 255, 122);
   color: black !important;
-  transform: scale(1.05); /* Optional: Add a slight scaling effect */
+  transform: scale(1.05);
   border-color: rgb(122, 255, 122) !important;
 }
 .btn-custom:active {
@@ -24,9 +24,9 @@ body {
 }
 
 .btn-custom:focus {
-  background-color: rgb(122, 255, 122); /* Slightly lighter shade on hover */
+  background-color: rgb(122, 255, 122);
   color: black !important;
-  transform: scale(1.05); /* Optional: Add a slight scaling effect */
+  transform: scale(1.05);
   border-color: rgb(122, 255, 122) !important;
 }
 .navbar-brand {
@@ -37,6 +37,22 @@ body {
   padding-left: 300px;
   padding-right: 300px;
   background-color: white;
+}
+
+@media (min-width: 1500px) {
+  .container.d-flex {
+    flex-wrap: wrap;
+  }
+  .row {
+    flex-direction: row;
+  }
+  .img {
+    max-width: 100%;
+  }
+  .subheading {
+    text-align: center;
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -65,12 +81,26 @@ body {
     padding-left: 50px;
     padding-right: 50px;
   }
-}
+  .card {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
 
-@media (max-width: 576px) {
+  .card-heading {
+    font-size: 1.25rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
   .img {
-    width: fit-content;
-    height: fit-content;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+  }
+  .heading {
+    margin-bottom: 0px;
   }
 }
 
@@ -105,16 +135,16 @@ body {
   width: 250px;
   height: 75px;
   border-radius: 10px;
-  background-color: rgb(122, 255, 122); /* Custom background color */
-  color: rgb(0, 0, 0); /* Text color */
+  background-color: rgb(122, 255, 122);
+  color: rgb(0, 0, 0);
   border-width: 1.75px;
   border-color: rgb(122, 255, 122);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .btn-brand:hover {
-  background-color: rgb(122, 255, 122); /* Slightly lighter shade on hover */
+  background-color: rgb(122, 255, 122);
   color: black !important;
-  transform: scale(1.05); /* Optional: Add a slight scaling effect */
+  transform: scale(1.05);
   border-color: rgb(122, 255, 122) !important;
 }
 .btn-brand:active {
@@ -125,9 +155,9 @@ body {
 }
 
 .btn-brand:focus {
-  background-color: rgb(122, 255, 122); /* Slightly lighter shade on hover */
+  background-color: rgb(122, 255, 122);
   color: black !important;
-  transform: scale(1.05); /* Optional: Add a slight scaling effect */
+  transform: scale(1.05);
   border-color: rgb(122, 255, 122) !important;
 }
 
@@ -142,13 +172,6 @@ body {
   align-items: center;
 }
 
-.card {
-  width: 30vw;
-  height: 30vw;
-  border-radius: 20px;
-  margin-right: 30px;
-}
-
 .card-cont {
   margin-top: 7vw;
   margin-bottom: 7vw;
@@ -157,6 +180,19 @@ body {
   padding-bottom: 2vw;
 }
 
+.card {
+  width: 30vw;
+  height: auto;
+  border-radius: 20px;
+  margin-right: 3vw;
+  margin-bottom: 2vw;
+}
+
 .card-heading {
   margin: 1vw;
+  font-size: 1.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
 }
