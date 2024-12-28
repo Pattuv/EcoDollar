@@ -56,10 +56,6 @@ body {
   font-weight: 600;
 }
 
-.main-container {
-  margin-bottom: 100px;
-}
-
 .center-cont {
   display: flex;
   justify-content: center;
@@ -202,11 +198,15 @@ body {
     font-size: 0.9rem;
   }
   .heading {
-    margin-bottom: 0px;
+    margin-bottom: 5vw;
   }
   .img {
     width: 80%; /* Increases image size for smaller screens */
     height: auto; /* Maintains aspect ratio */
     border-radius: 5vw; /* Adjusts rounding for smaller screens */
+    margin-bottom: 5vw;
+  }
+  .main-container {
+    margin-bottom: 5vw;
   }
 }
