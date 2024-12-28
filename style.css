@@ -39,69 +39,6 @@ body {
   background-color: white;
 }
 
-@media (min-width: 1500px) {
-  .container.d-flex {
-    flex-wrap: wrap;
-  }
-  .row {
-    flex-direction: row;
-  }
-  .img {
-    height: 20vw;
-  }
-  .subheading {
-    text-align: center;
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .custom-navbar {
-    padding-left: 200px;
-    padding-right: 200px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .custom-navbar {
-    padding-left: 150px;
-    padding-right: 150px;
-  }
-}
-
-@media (max-width: 992px) {
-  .custom-navbar {
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  .custom-navbar {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-  .card {
-    width: 80%;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  .card-heading {
-    font-size: 1.25rem;
-  }
-
-  .card-text {
-    font-size: 0.9rem;
-  }
-  .img {
-    margin-top: 0;
-  }
-  .heading {
-    margin-bottom: 0px;
-  }
-}
-
 .img {
   width: 37vw;
   height: auto; /* Maintains aspect ratio */
@@ -111,11 +48,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .img {
-    width: 80%; /* Increases image size for smaller screens */
-    height: auto; /* Maintains aspect ratio */
-    border-radius: 5vw; /* Adjusts rounding for smaller screens */
-  }
 }
 
 .heading {
@@ -215,4 +147,66 @@ body {
   border: 2px solid black;
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
+}
+
+@media (min-width: 1500px) {
+  .container.d-flex {
+    flex-wrap: wrap;
+  }
+  .row {
+    flex-direction: row;
+  }
+  .subheading {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .custom-navbar {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .custom-navbar {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+
+@media (max-width: 992px) {
+  .custom-navbar {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-navbar {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .card {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .card-heading {
+    font-size: 1.25rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+  .heading {
+    margin-bottom: 0px;
+  }
+  .img {
+    width: 80%; /* Increases image size for smaller screens */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 5vw; /* Adjusts rounding for smaller screens */
+  }
 }
