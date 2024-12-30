@@ -41,29 +41,39 @@
         font-size: 34px;
         font-weight: bold;
         text-align: center;
-        color: rgb(122, 225, 122);
+        color: rgb(122, 255, 122);
         margin-bottom: 1rem;
       }
       .form-control {
         border-radius: 5px;
       }
-      .btn-custom {
-        background-color: rgb(122, 225, 122);
-        color: white;
-        font-weight: bold;
-        border: none;
-        border-radius: 5px;
-        padding: 0.5rem 1rem;
+      .btn-brand {
+        height: 45px;
+        border-radius: 10px;
+        background-color: rgb(122, 255, 122);
+        color: rgb(0, 0, 0);
+        border-width: 1.75px;
+        border-color: rgb(122, 255, 122);
+        transition: background-color 0.3s ease, transform 0.2s ease;
       }
-      .btn-custom:hover {
-        background-color: rgb(102, 205, 102);
+      .btn-brand:hover {
+        background-color: rgb(122, 255, 122);
+        color: black !important;
+        transform: scale(1.05);
+        border-color: rgb(122, 255, 122) !important;
+      }
+      .btn-brand:active {
+        background-color: rgb(122, 255, 122) !important;
+        color: rgb(0, 0, 0) !important;
+        transform: scale(1.1);
+        border-color: rgb(122, 255, 122) !important;
       }
       .signup-link {
         margin-top: 1rem;
         text-align: center;
       }
       .signup-link a {
-        color: rgb(122, 225, 122);
+        color: rgb(122, 255, 122);
         text-decoration: none;
         font-weight: bold;
       }
@@ -106,7 +116,9 @@
               placeholder="Enter your password"
             />
           </div>
-          <button type="submit" class="btn btn-custom w-100">Login</button>
+          <button type="submit" class="btn btn-primary btn-brand w-100">
+            Login
+          </button>
         </form>
         <div class="signup-link">
           Don’t have an account? <a href="signup.html">Sign up here!</a>
