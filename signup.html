@@ -22,15 +22,10 @@
     <style>
       body {
         font-family: "Afacad Flux", sans-serif;
-      }
-      .login-container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        overflow-y: hidden;
-        margin: 0;
-        padding: 0;
       }
       .login-card {
         background-color: white;
@@ -84,47 +79,45 @@
     </style>
   </head>
   <body>
-    <div class="login-container">
-      <div class="login-card">
-        <div class="brand-logo">
-          <a class="navbar-brand" href="index.html">
-            <img
-              src="assets/favicon.png"
-              alt=""
-              width="30"
-              height="30"
-              class="d-inline-block align-text-top"
-              style="margin-top: 8px; margin-right: 5px"
-            />EcoDollar</a
-          >
+    <div class="login-card">
+      <div class="brand-logo">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="assets/favicon.png"
+            alt=""
+            width="30"
+            height="30"
+            class="d-inline-block align-text-top"
+            style="margin-top: 8px; margin-right: 5px"
+          />EcoDollar</a
+        >
+      </div>
+      <p style="font-size: 20px"><u>Sign Up</u></p>
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+          />
         </div>
-        <p style="font-size: 20px"><u>Sign Up</u></p>
-        <form>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Enter your password"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary btn-brand w-100">
-            Sign Up
-          </button>
-        </form>
-        <div class="signup-link">
-          Already have an account? <a href="login.html">Log in here!</a>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter your password"
+          />
         </div>
+        <button type="submit" class="btn btn-primary btn-brand w-100">
+          Sign Up
+        </button>
+      </form>
+      <div class="signup-link">
+        Already have an account? <a href="login.html">Log in here!</a>
       </div>
     </div>
     <!-- Bootstrap JS -->
