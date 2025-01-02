@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoDollar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='assets/favicon.png') }}"
+      type="image/png"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-sm bg-body-primary custom-navbar fixed-top"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img
+            src="{{ url_for('static', filename='assets/favicon.png') }}"
+            alt=""
+            width="30"
+            height="30"
+            class="d-inline-block align-text-top"
+            style="margin-top: 6px; margin-right: 5px"
+          />EcoDollar</a
+        >
+        <button
+          class="navbar-toggler btn-custom"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacts">Contacts</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <div class="container-fluid" id="logsign">
+              <a href="/login">
+                <button class="btn btn-primary btn-custom" id="login">
+                  Login
+                </button>
+              </a>
+              <a href="/signup">
+                <button class="btn btn-primary btn-custom" id="signup">
+                  Sign Up
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <h1 class="display-4 heading main-txt">
+      Recycle, now you've got a reason to.
+    </h1>
+
+    <div
+      class="container d-flex justify-content-center align-items-center main-container"
+    >
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <img
+            class="img img-fluid"
+            src="{{ url_for('static', filename='assets/mockup.png') }}"
+            alt="no image found ☹️"
+          />
+        </div>
+
+        <div
+          class="col-md-6 col-12 container d-flex flex-column justify-content-center align-items-center"
+        >
+          <p class="fs-2 subheading mb-4 text-center">
+            Earn rewards for recycling. Recycle actively and efficiently for
+            your community.
+          </p>
+          <a href="/login ">
+            <button class="btn btn-primary btn-brand">
+              <label for="" class="fs-5">Get Started</label>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="d-flex flex-wrap justify-content-center align-items-center card-cont"
+    >
+      <div class="card m-2" style="width: 18rem">
+        <div class="card-body">
+          <h4 class="card-title display-8 heading card-heading">Recycle.</h4>
+          <p class="card-text fs-5 subheading mb-4">
+            Using our recycling forms system, you can recycle and record what,
+            when, where, and how much you recycle.
+          </p>
+        </div>
+      </div>
+
+      <div class="card m-2" style="width: 18rem">
+        <div class="card-body">
+          <h4 class="card-title display-8 heading card-heading">
+            Earn points, redeem for stuff!
+          </h4>
+          <p class="card-text fs-5 subheading mb-4">
+            Submitting recycling forms earns you points which can be redeemed
+            for cash or rewards.
+          </p>
+        </div>
+      </div>
+
+      <div class="card m-2" style="width: 18rem">
+        <div class="card-body">
+          <h4 class="card-title display-8 heading card-heading">
+            Find recycling plants near you.
+          </h4>
+          <p class="card-text fs-5 subheading mb-4">
+            Don't know where to recycle? Use our Maps feature to find locations
+            near you as well as directions to them.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5">
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5 col-12">
+          <div class="custom-card" id="about">
+            <h3 class="text-center">About</h3>
+            <p>
+              Pollution and resource scarcity are becoming real problems here on
+              Earth. Only abut 20-25% of people actually recycle effictively
+              worldwide. EcoDollar is a non-profit organization aimed at helping
+              people to recycle by giving them a motive to, and as a result
+              making the world a better place, little by little. *Note that
+              EcoDollar is currently in it's beta phase, and no money or
+              transactions of any kind will be made on the platform at the
+              moment.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-5 col-12">
+          <div class="custom-card" id="contacts">
+            <h3 class="text-center">Contacts</h3>
+            <p>
+              For any questions, concerns, feedback, or notices, contact us at:
+
+              <li>
+                <a href="mailto:pratyushv09@gmail.com">pratyushv09@gmail.com</a>
+              </li>
+              <li>470-437-2414</li>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
