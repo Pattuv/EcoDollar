@@ -27,6 +27,10 @@
       href="{{ url_for('static', filename='assets/favicon.png') }}"
       type="image/png"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='home.css') }}"
+    />
   </head>
   <body>
     <nav
@@ -65,7 +69,7 @@
           </ul>
           <div class="d-flex">
             <div class="container-fluid" id="logsign">
-              <a href="/login">
+              <a href="/auth">
                 <button class="btn btn-primary btn-custom" id="login">
                   Login or Sign Up
                 </button>
@@ -99,7 +103,7 @@
             Earn rewards for recycling. Recycle actively and efficiently for
             your community.
           </p>
-          <a href="/login ">
+          <a href="/auth ">
             <button class="btn btn-primary btn-brand">
               <label for="" class="fs-5">Get Started</label>
             </button>

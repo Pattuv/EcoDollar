@@ -27,8 +27,15 @@ class User(db.Model):
 
 
 #routes
+
+
+
 @app.route("/")
 def home():
+    return render_template('home.html')
+
+@app.route("/auth")
+def auth():
     if "username" in session:
         return redirect(url_for('dashboard'))
     return render_template('auth.html')
