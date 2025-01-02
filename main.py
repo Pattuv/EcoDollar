@@ -40,11 +40,13 @@ def login():
     username = request.form['username']
     password = request.form['password']
     user = User.query.filter_by(username=username).first()
+    
     if user and user.check_password(password):
         session['username'] = username
         return redirect(url_for('dashboard'))
     else:
-        return render_template('auth.html')
+        return render_template('auth.html', error="Invalid username or password.")
+
         
 
 
@@ -53,8 +55,9 @@ def register():
     username = request.form['username']
     password = request.form['password']
     user = User.query.filter_by(username=username).first()
+    
     if user:
-        return render_template("auth.html", error="This account already exists.")
+        return render_template("auth.html", error="This username is already taken. Please choose another.")
     else:
         new_user = User(username=username)
         new_user.set_password(password)
@@ -62,6 +65,7 @@ def register():
         db.session.commit()
         session['username'] = username
         return redirect(url_for('dashboard'))
+
     
 
 @app.route("/dashboard")
