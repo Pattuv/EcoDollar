@@ -1,11 +1,29 @@
 body {
   font-family: "Afacad Flux", sans-serif;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-
+.login-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 -1px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+.brand-logo {
+  font-size: 34px;
+  text-align: center;
+  color: rgb(122, 255, 122);
+  margin-bottom: 1rem;
+}
+.form-control {
+  border-radius: 5px;
+}
 .btn-brand {
   height: 45px;
-  width: 200px !important;
   border-radius: 10px;
   background-color: rgb(122, 255, 122);
   color: rgb(0, 0, 0);
@@ -24,4 +42,15 @@ body {
   color: rgb(0, 0, 0) !important;
   transform: scale(1.1);
   border-color: rgb(122, 255, 122) !important;
+}
+.signup-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+.signup-link a {
+  color: rgb(122, 255, 122);
+  text-decoration: none;
+}
+.signup-link a:hover {
+  text-decoration: underline;
 }
