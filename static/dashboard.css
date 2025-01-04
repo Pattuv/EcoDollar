@@ -1,13 +1,10 @@
 body {
-  font-family: "Afacad Flux", sans-serif;
+  font-family: "Afacad Flux", sans-serif !important;
   text-align: center;
 }
 
 .btn-brand {
-  height: 45px;
-  width: 200px !important;
-  border-radius: 10px;
-  background-color: rgb(122, 255, 122);
+  background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   border-width: 1.75px;
   border-color: rgb(122, 255, 122);
@@ -25,6 +22,13 @@ body {
   transform: scale(1.1);
   border-color: rgb(122, 255, 122) !important;
 }
+
+.btn-brand:focus {
+  background-color: rgb(122, 255, 122);
+  color: black !important;
+  transform: scale(1.05);
+  border-color: rgb(122, 255, 122) !important;
+}
 .navbar {
   background-color: rgb(122, 255, 122);
   height: 60px;
@@ -37,7 +41,6 @@ body {
 
 .welcome {
   margin-top: 20px;
-  font-weight: 610;
 }
 
 .sidebar {
@@ -56,7 +59,6 @@ body {
 .sidebar a {
   padding: 10px 15px;
   text-decoration: none;
-  font-size: 18px;
   color: black;
   display: block;
   transition: 0.3s;
@@ -92,14 +94,53 @@ body {
   transform: scale(1.05);
 }
 .brand-logo img {
+  margin-top: -7px;
   vertical-align: middle;
-  margin-right: 8px;
 }
 .brand-logo {
-  font-size: 34px !important;
+  font-size: 28px !important;
   text-align: center;
   color: rgb(122, 255, 122) !important;
   text-align: center;
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
+}
+
+.card-title {
+  font-size: 30px;
+}
+
+.main-dash-text {
+  color: rgb(122, 255, 122);
+  font-size: 50px;
+  font-weight: 700;
+  margin-top: -20px;
+}
+
+.main-big-text {
+  color: rgb(122, 255, 122);
+  font-size: 100px;
+  font-weight: 700;
+  margin-top: -30px;
+}
+
+.main {
+  font-size: 40px;
+}
+.submain {
+  font-size: 30px;
+  color: rgb(122, 255, 122);
+  margin-top: -40px;
+}
+
+.tighter-spacing p {
+  margin-bottom: 0; /* Reduce space between all paragraphs */
+}
+
+.tighter-spacing p:last-child {
+  margin-bottom: 0; /* Remove space after the last paragraph */
+}
+
+.card {
+  border-radius: 30px;
 }

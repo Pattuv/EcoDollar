@@ -48,9 +48,9 @@
           EcoDollar
         </a>
       </div>
-      <a href="#profile">Profile</a>
-      <a href="#settings">Settings</a>
-      <a href="#about">About</a>
+      <a href="#profile">Store</a>
+      <a href="#settings">Badges</a>
+      <a href="#about">Recycling Form</a>
       <a href="{{url_for('logout')}}">
         <button class="btn btn-primary btn-brand w-100">Log Out</button>
       </a>
@@ -59,6 +59,161 @@
     <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
     <h1 class="welcome">Welcome, {{username}}</h1>
+
+    <!-- Dashboard Cards Section -->
+    <div class="container mt-4">
+      <div class="row g-4">
+        <!-- Card 1: How much recycled -->
+        <div class="col-12">
+          <div class="card h-100 shadow p-3">
+            <div class="row g-3">
+              <!-- Text Column -->
+              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                <div class="px-3">
+                  <h5 class="card-title">Total Recycled</h5>
+                  <p class="card-text">
+                    This is the total amount of trash you've ever recycled.
+                  </p>
+                </div>
+              </div>
+              <!-- Image Column -->
+              <div class="col-12 col-md-6 justify-content-center  align-items-center  flex-column">
+                <p class="card-text mb-0">You have recycled:</p> <!-- Removed margin-bottom -->
+                <p class="card-text main-big-text mb-0">50</p> <!-- Removed margin-bottom -->
+                <p class="submain mb-0">Kilograms</p> <!-- Removed margin-bottom -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        
+
+
+                <!-- Card 2: Points Earned -->
+        <div class="col-12 col-md-6">
+          <div class="card h-100 shadow p-3">
+            <div class="row g-3">
+              <!-- Text Column -->
+              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                <div class="px-3">
+                  <h5 class="card-title">Points</h5>
+                  <p class="card-text">
+                    The amount of points you currently have.
+                  </p>
+                </div>
+              </div>
+              <!-- Image Column -->
+              <div class="col-12 col-md-6 justify-content-center align-items-center flex-column">
+                <p class="card-text">
+                  You have earned:
+                </p>
+                <p class="card-text main-dash-text mb-0">250 points!</p>
+                <a href="#" class="btn btn-primary btn-brand">Redeem Points</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Medals -->
+        <div class="col-12 col-md-6">
+          <div class="card h-100 shadow p-3">
+            <div class="row g-3">
+              <!-- Text Column -->
+              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                <div class="px-3">
+                  <h5 class="card-title">Medals</h5>
+                  <p class="card-text">
+                    Medals are special acheivements unlocked while recycling.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 justify-content-center align-items-center flex-column">
+                <p class="card-text">
+                  You have earned:
+                </p>
+                <p class="card-text main-dash-text mb-0">5 medals!</p>
+                <a href="#" class="btn btn-primary btn-brand">View Medals</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="col-12 col-md-6">
+          <div class="card h-100 shadow">
+            <div class="card-body text-center">
+              <h5 class="card-title">Daily Challenge</h5>
+              <p class="card-text" style="margin-bottom: 5px">
+                Todays Daily Challenge:
+              </p>
+              <p class="card-text main">Recycle 10 plastic bottles.</p>
+              <p class="card-text">
+                Complete the Daily Challenge to unlock medals and earn extra
+                points!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="card h-100 shadow p-3">
+            <div class="row g-3">
+              <!-- Text Column -->
+              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                <div class="px-3">
+                  <h5 class="card-title">Recycle</h5>
+                  <p class="card-text">
+                    Recycle and record it using our Recycling Form! This is how you start earning medals and points.
+                  </p>
+                  <a href="#" class="btn btn-primary btn-brand">Recycling Form</a>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 justify-content-center align-items-center flex-column">
+                <img
+                  src="{{ url_for('static', filename='assets/Recycling Form.png') }}"
+                  alt="Descriptive Alt Text"
+                  class="img-fluid"
+                  style="max-width: 100%; height: auto; max-height: 200px; border-radius: 10px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card h-100 shadow p-3">
+            <div class="row g-3">
+              <!-- Text Column -->
+              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                <div class="px-3">
+                  <h5 class="card-title">Don't Know Where to Recycle?</h5>
+                  <p class="card-text">
+                    Use our maps feature to find plants near you.
+                  </p>
+                  <a href="#" class="btn btn-primary btn-brand">Find Plants Near Me</a>
+                </div>
+              </div>
+              <!-- Image Column -->
+              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                <img
+                  src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg"
+                  alt="Descriptive Alt Text"
+                  class="img-fluid"
+                  style="max-width: 100%; height: auto; max-height: 450px; border-radius: 50px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        </div>
+      </div>
+    </div>
 
     <script>
       let isSidebarOpen = false;
