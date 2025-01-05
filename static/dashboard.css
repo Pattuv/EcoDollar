@@ -113,7 +113,7 @@ body {
 .main-dash-text {
   color: rgb(122, 255, 122);
   font-size: 50px;
-  font-weight: 700;
+  font-weight: 600;
   margin-top: -20px;
 }
 
@@ -143,4 +143,19 @@ body {
 
 .card {
   border-radius: 30px;
+}
+
+.menu-btn {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+@media (max-width: 1024px) {
+  .main-dash-text {
+    font-weight: 500;
+  }
+
+  .main-big-text {
+    font-weight: 500;
+  }
 }
