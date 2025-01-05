@@ -89,6 +89,11 @@ def logout():
     return redirect(url_for('home'))
 
 
+@app.route("/form")
+def form():
+    return render_template('form.html')
+
+
 
 if __name__ in "__main__":
     with app.app_context():
