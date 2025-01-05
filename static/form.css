@@ -1,6 +1,9 @@
 body {
   font-family: "Afacad Flux", sans-serif !important;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .btn-brand {
@@ -37,10 +40,6 @@ body {
   align-items: center;
   font-size: 24px;
   font-weight: bold;
-}
-
-.welcome {
-  margin-top: 20px;
 }
 
 .sidebar {
@@ -111,51 +110,23 @@ body {
   text-decoration: none !important;
 }
 
-.card-title {
-  font-size: 30px;
+.form-control {
+  border-radius: 5px;
+  width: 300px;
 }
 
-.main-dash-text {
-  color: rgb(122, 255, 122);
-  font-size: 50px;
-  font-weight: 600;
-  margin-top: -20px;
+.center-container {
+  display: flex;
+  flex-direction: column; /* Stacks label and input vertically */
+  align-items: center; /* Centers the entire form horizontally */
 }
 
-.main-big-text {
-  color: rgb(122, 255, 122);
-  font-size: 100px;
-  font-weight: 700;
-  margin-top: -30px;
+.center-container .form-label {
+  width: 100%; /* Ensures the label spans the full width of the container */
+  text-align: left; /* Aligns the label's text to the left */
+  margin-bottom: 5px; /* Adds spacing between the label and the input */
 }
 
-.main {
-  font-size: 40px;
-}
-.submain {
-  font-size: 30px;
-  color: rgb(122, 255, 122);
-  margin-top: -40px;
-}
-
-.tighter-spacing p {
-  margin-bottom: 0; /* Reduce space between all paragraphs */
-}
-
-.tighter-spacing p:last-child {
-  margin-bottom: 0; /* Remove space after the last paragraph */
-}
-
-.card {
-  border-radius: 30px;
-}
-
-@media (max-width: 1024px) {
-  .main-dash-text {
-    font-weight: 500;
-  }
-
-  .main-big-text {
-    font-weight: 500;
-  }
+.center-container .form-control {
+  width: 350px; /* Ensures the input takes the full width of the container */
 }

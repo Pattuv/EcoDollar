@@ -24,10 +24,71 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='dashboard.css') }}"
+      href="{{ url_for('static', filename='form.css') }}"
     />
   </head>
   <body>
-    Recycling Form
+    <button id="menu-btn" class="menu-btn" onclick="toggleSidebar()">
+      ☰ Menu
+    </button>
+
+    <div id="sidebar" class="sidebar">
+      <div class="brand-logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='assets/favicon.png') }}"
+            alt="EcoDollar Logo"
+            width="30"
+            height="30"
+          />
+          EcoDollar
+        </a>
+      </div>
+      <a href="/dashboard">Dashboard</a>
+      <a href="#profile">Store</a>
+      <a href="#settings">Badges</a>
+      <a href="{{url_for('logout')}}">
+        <button class="btn btn-primary btn-brand w-100">Log Out</button>
+      </a>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+    <h1 style="margin-top: 20px">Recycling Form</h1>
+
+    <form action="#">
+      <div class="mb-3 center-container">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          placeholder="Enter your username"
+          required
+        />
+      </div>
+    </form>
+
+    <script>
+      let isSidebarOpen = false;
+
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const menuBtn = document.getElementById("menu-btn");
+
+        if (isSidebarOpen) {
+          sidebar.style.width = "0";
+          overlay.style.display = "none";
+          menuBtn.textContent = "☰ Menu";
+        } else {
+          sidebar.style.width = "250px";
+          overlay.style.display = "block";
+          menuBtn.textContent = "✖ Close";
+        }
+
+        isSidebarOpen = !isSidebarOpen;
+      }
+    </script>
   </body>
 </html>
