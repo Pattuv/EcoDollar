@@ -23,16 +23,6 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-class RecyclingCenter(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    latitude = db.Column(db.Float, nullable=False)  # Latitude of the recycling center
-    longitude = db.Column(db.Float, nullable=False)  # Longitude of the recycling center
-    address = db.Column(db.String(255), nullable=False)
-
-    def __repr__(self):
-        return f'<RecyclingCenter {self.name}>'
-
 
 
 
