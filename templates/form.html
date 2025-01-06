@@ -50,7 +50,11 @@
 
     <h1 style="margin-top: 20px; margin-bottom: 40px">Recycling Form</h1>
 
-    <form action="#" method="POST">
+    <form
+      action="/submit_recycling"
+      method="POST"
+      enctype="multipart/form-data"
+    >
       <!-- Material Type -->
       <div class="mb-3 center-container">
         <label for="materials" class="form-label">Select Materials</label>
@@ -122,12 +126,52 @@
         </div>
       </div>
 
-      <p>READ BELOW - VERY IMPORTANT</p>
+      <!-- Drop-off/Collection Details -->
+      <div class="mb-3 center-container">
+        <label for="location" class="form-label"
+          >Drop-off/Collection Details</label
+        >
+        <select id="location" name="location" class="form-select" required>
+          <option value="" disabled selected>Select one</option>
+          <option value="Neighborhood Recycling Service">
+            Neighborhood Recycling Service
+          </option>
+          <option value="Recycling Center">Recycling Center</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
 
-      <p></p>
-        EcoDollar only works with database registered recycling <br> centers. Check
-        our recycling centers list to see if your <br> nearest recycling center is
-        valid. EcoDollar requests your <br> location and geotags your form upon submission to ensure <br> user integrity, so you must be at the registered center you <br> recycled at to earn points for your submission.
+      <!-- Proof of Recycling -->
+      <div class="mb-3 center-container">
+        <label for="proof" class="form-label">Upload Proof of Recycling</label>
+        <input
+          type="file"
+          id="proof"
+          name="proof"
+          class="form-control"
+          accept="image/*,application/pdf"
+          required
+        />
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3 center-container">
+        <label for="description" class="form-label">Short Description</label>
+        <textarea
+          id="description"
+          name="description"
+          class="form-control"
+          rows="3"
+          placeholder="Describe your recycling process or any other relevant information"
+          required
+        ></textarea>
+      </div>
+
+      <p>
+        <em
+          >Forms may take up to 24 hours to be validated. <br />
+          Once validated, the points will be added to your account.</em
+        >
       </p>
 
       <!-- Dynamic Points Display -->
@@ -138,12 +182,6 @@
             submission.</strong
           >
         </p>
-      </div>
-
-      <!-- Location Error -->
-      <div id="geo-error" style="color: red; display: none; margin-top: 5px">
-        Unable to fetch your location. Please enable location services to
-        submit.
       </div>
 
       <!-- Submit Button -->
@@ -160,37 +198,9 @@
       const weightError = document.getElementById("weight-error");
       const weightLimitSpan = document.getElementById("weight-limit");
       const submitButton = document.querySelector("button[type='submit']");
-      const geoError = document.getElementById("geo-error");
 
       const maxWeight = 5000; // Maximum allowable weight
       weightLimitSpan.textContent = maxWeight;
-
-      let userLocation = null;
-
-      function getUserLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              userLocation = {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-              };
-              console.log("User Location:", userLocation);
-              geoError.style.display = "none";
-              submitButton.disabled = false;
-            },
-            (error) => {
-              console.error("Geolocation Error:", error.message);
-              geoError.style.display = "block";
-              submitButton.disabled = true;
-            }
-          );
-        } else {
-          geoError.textContent = "Geolocation not supported by your browser.";
-          geoError.style.display = "block";
-          submitButton.disabled = true;
-        }
-      }
 
       weightInput.addEventListener("input", () => {
         const weight = parseFloat(weightInput.value) || 0;
@@ -201,7 +211,7 @@
           submitButton.disabled = true;
         } else {
           weightError.style.display = "none";
-          if (userLocation) submitButton.disabled = false;
+          submitButton.disabled = false;
         }
 
         // Update points dynamically if weight is valid
@@ -211,15 +221,14 @@
         }
       });
 
-      // Fetch user location on page load
-      window.onload = getUserLocation;
+      let isSidebarOpen = false;
 
       function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
         const overlay = document.getElementById("overlay");
         const menuBtn = document.getElementById("menu-btn");
 
-        if (sidebar.style.width === "250px") {
+        if (isSidebarOpen) {
           sidebar.style.width = "0";
           overlay.style.display = "none";
           menuBtn.textContent = "☰ Menu";
@@ -228,6 +237,8 @@
           overlay.style.display = "block";
           menuBtn.textContent = "✖ Close";
         }
+
+        isSidebarOpen = !isSidebarOpen;
       }
     </script>
   </body>

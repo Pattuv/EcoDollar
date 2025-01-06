@@ -1,19 +1,35 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail, Message
+import os
+from dotenv import load_dotenv
+from werkzeug.utils import secure_filename
 
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = "tsaslc2025"
 
-#config database
-app.config["SQLALCHEMY_DATABASE_URI"]  = "sqlite:///users.db"
+# Email Configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Gmail SMTP server
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Your Gmail username (stored as environment variable)
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Your Gmail password (stored as environment variable)
+app.config['MAIL_DEFAULT_SENDER'] = 'ecodollarformsender@gmail.com'   # Default sender email
+
+mail = Mail(app)
+
+# Database Configuration
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 app.config["SQLALCHEMY_TRACK_NOTIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-#database model
+# Database Model
 class User(db.Model):
-    id  = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
     password_hash = db.Column(db.String(150), nullable=False)
 
@@ -23,24 +39,68 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+# Routes
 
+@app.route("/submit_recycling", methods=["POST"])
+def submit_recycling():
+    # Get form data
+    materials = request.form.getlist("materials")
+    weight = request.form["weight"]
+    location = request.form["location"]
+    description = request.form["description"]
+    proof_file = request.files["proof"]
 
+    # Prepare email message
+    try:
+        # Compose the email message
+        msg = Message(
+            "New Recycling Submission", 
+            recipients=["ecodollara@gmail.com"]  # Admin email address
+        )
+        msg.body = f"""
+        New recycling submission:
 
-#routes
+        Materials: {', '.join(materials)}
+        Weight: {weight} grams
+        Drop-off Location: {location}
+        Description: {description}
 
+        A proof of recycling has been uploaded.
+        """
 
+        # Attach the proof file (image) directly from the form
+        if proof_file:
+            # Secure the filename to avoid security risks
+            filename = secure_filename(proof_file.filename)
+            
+            # Attach the proof file directly without saving it to disk
+            msg.attach(
+                filename,  # Filename in email
+                proof_file.content_type,  # Content type (image/jpeg, image/png, etc.)
+                proof_file.read()  # File content
+            )
 
-@app.route("/")
-def home():
-    return render_template('home.html')
+        # Send the email
+        mail.send(msg)
+
+        return redirect(url_for('thank_you'))  # Redirect to thank you page
+    except Exception as e:
+        print(f"Error: {e}")
+        return "There was an error processing your form. Please try again later."
+
+@app.route("/thank_you")
+def thank_you():
+    return "Thank you for your submission! Your points will be added soon."
+
+@app.route("/form")
+def form():
+    return render_template('form.html')
 
 @app.route("/auth")
 def auth():
     if "username" in session:
         return redirect(url_for('dashboard'))
     return render_template('auth.html')
-
-
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -53,9 +113,6 @@ def login():
         return redirect(url_for('dashboard'))
     else:
         return render_template('auth.html', error="Invalid username or password.")
-
-        
-
 
 @app.route("/register",  methods=["POST"])
 def register():
@@ -73,29 +130,22 @@ def register():
         session['username'] = username
         return redirect(url_for('dashboard'))
 
-    
-
 @app.route("/dashboard")
 def dashboard():
     if "username" in session:
         return render_template('dashboard.html', username=session['username'])
     return redirect(url_for('home'))
 
-
-
 @app.route("/logout")
 def logout():
     session.pop('username',None)
     return redirect(url_for('home'))
 
+@app.route("/")
+def home():
+    return render_template('home.html')
 
-@app.route("/form")
-def form():
-    return render_template('form.html')
-
-
-
-if __name__ in "__main__":
+if __name__ == "__main__":
     with app.app_context():
         db.create_all()
     app.run(debug=True, host='0.0.0.0')
