@@ -43,54 +43,54 @@ class User(db.Model):
 
 @app.route("/submit_recycling", methods=["POST"])
 def submit_recycling():
-    # Get form data
+    if "username" not in session:
+        return redirect(url_for('auth'))  # Ensure user is logged in
+
+    username = session["username"]  # Get the logged-in username
     materials = request.form.getlist("materials")
     weight = request.form["weight"]
     location = request.form["location"]
     description = request.form["description"]
     proof_file = request.files["proof"]
 
-    # Prepare email message
     try:
-        # Compose the email message
+        # Compose email
         msg = Message(
-            "New Recycling Submission", 
-            recipients=["ecodollara@gmail.com"]  # Admin email address
+            "New Recycling Submission",
+            recipients=["ecodollara@gmail.com"]  # Admin email
         )
-        msg.body = f"""
-        New recycling submission:
-
-        Materials: {', '.join(materials)}
-        Weight: {weight} grams
-        Drop-off Location: {location}
-        Description: {description}
-
-        A proof of recycling has been uploaded.
+        msg.html = f"""
+        <h2>Recycling submission from user: {username}</h2>
+        <p><strong>Materials:</strong> {', '.join(materials)}</p>
+        <p><strong>Weight:</strong> {weight} grams</p>
+        <p><strong>Drop-off Location:</strong> {location}</p>
+        <p><strong>Description:</strong> {description}</p>
+        <p>Please review and validate this submission:</p>
+        <a href="{url_for('dashboard', username=username, weight=weight, _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:green; border-radius:5px;">Accept</a>
+        <a href="{url_for('dashboard', _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:red; border-radius:5px; margin-left:10px;">Decline</a>
         """
 
-        # Attach the proof file (image) directly from the form
+        # Attach the proof file (image or PDF)
         if proof_file:
-            # Secure the filename to avoid security risks
-            filename = secure_filename(proof_file.filename)
-            
-            # Attach the proof file directly without saving it to disk
             msg.attach(
-                filename,  # Filename in email
-                proof_file.content_type,  # Content type (image/jpeg, image/png, etc.)
-                proof_file.read()  # File content
+                secure_filename(proof_file.filename),
+                proof_file.content_type,
+                proof_file.read()
             )
 
-        # Send the email
+        # Send email to the admin
         mail.send(msg)
 
-        return redirect(url_for('thank_you'))  # Redirect to thank you page
+        return redirect(url_for('thank_you'))
     except Exception as e:
         print(f"Error: {e}")
         return "There was an error processing your form. Please try again later."
 
+
+
 @app.route("/thank_you")
 def thank_you():
-    return "Thank you for your submission! Your points will be added soon."
+    return render_template('thanks.html')
 
 @app.route("/form")
 def form():
