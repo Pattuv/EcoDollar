@@ -84,7 +84,9 @@ def submit_recycling():
         return redirect(url_for('thank_you'))
     except Exception as e:
         print(f"Error: {e}")
-        return "There was an error processing your form. Please try again later."
+        print(os.getenv('MAIL_USERNAME'))
+        print(os.getenv('MAIL_PASSWORD'))
+        return f"Error: {e}"
 
 
 
