@@ -76,7 +76,7 @@
               <!-- Image Column -->
               <div class="col-12 col-md-6 justify-content-center  align-items-center  flex-column">
                 <p class="card-text mb-0">You have recycled:</p> <!-- Removed margin-bottom -->
-                <p class="card-text main-big-text mb-0">0</p> <!-- Removed margin-bottom -->
+                <p class="card-text main-big-text mb-0">{{ total_recycled }}</p> <!-- Removed margin-bottom -->
                 <p class="submain mb-0">Grams</p> <!-- Removed margin-bottom -->
               </div>
             </div>
@@ -106,7 +106,7 @@
                 <p class="card-text">
                   You have earned:
                 </p>
-                <p class="card-text main-dash-text mb-0">0 points</p>
+                <p class="card-text main-dash-text mb-0">{{ points }} points</p>
                 <a href="#" class="btn btn-primary btn-brand">Redeem Points</a>
               </div>
             </div>

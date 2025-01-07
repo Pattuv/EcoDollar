@@ -27,17 +27,25 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
 app.config["SQLALCHEMY_TRACK_NOTIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-# Database Model
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
     password_hash = db.Column(db.String(150), nullable=False)
+    total_recycled = db.Column(db.Integer, default=0)  # Field to track total recycled
+    points = db.Column(db.Integer, default=0)  # Field to track points
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def add_recycling(self, weight):
+        """Update total recycled and points when a recycling submission is made"""
+        self.total_recycled += weight
+        self.points += weight // 100  # You can adjust this formula as needed
+        db.session.commit()
+
 
 # Routes
 
@@ -48,7 +56,7 @@ def submit_recycling():
 
     username = session["username"]  # Get the logged-in username
     materials = request.form.getlist("materials")
-    weight = request.form["weight"]
+    weight = int(request.form["weight"])  # Make sure weight is treated as an integer
     location = request.form["location"]
     description = request.form["description"]
     proof_file = request.files["proof"]
@@ -66,7 +74,7 @@ def submit_recycling():
         <p><strong>Drop-off Location:</strong> {location}</p>
         <p><strong>Description:</strong> {description}</p>
         <p>Please review and validate this submission:</p>
-        <a href="{url_for('dashboard', username=username, weight=weight, _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:green; border-radius:5px;">Accept</a>
+        <a href="{url_for('accept', username=username, weight=weight, _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:green; border-radius:5px;">Accept</a>
         <a href="{url_for('dashboard', _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:red; border-radius:5px; margin-left:10px;">Decline</a>
         """
 
@@ -84,9 +92,31 @@ def submit_recycling():
         return redirect(url_for('thank_you'))
     except Exception as e:
         print(f"Error: {e}")
-        print(os.getenv('MAIL_USERNAME'))
-        print(os.getenv('MAIL_PASSWORD'))
         return f"Error: {e}"
+
+
+@app.route("/accept")
+def accept():
+    # Get the username and weight from the URL query parameters
+    username = request.args.get("username")
+    weight = int(request.args.get("weight"))
+
+    if not username or weight <= 0:
+        return "Invalid submission data", 400
+
+    # Retrieve the user from the database
+    user = User.query.filter_by(username=username).first()
+
+    if user:
+        # Update the user's total recycled and points
+        user.total_recycled += weight
+        user.points += weight // 10  # Points can be calculated, for example, 1 point for every 100 grams
+        db.session.commit()
+
+        # Redirect to the user's dashboard or a confirmation page
+        return render_template('accepted.html')
+    else:
+        return "User not found", 404
 
 
 
@@ -135,8 +165,11 @@ def register():
 @app.route("/dashboard")
 def dashboard():
     if "username" in session:
-        return render_template('dashboard.html', username=session['username'])
+        user = User.query.filter_by(username=session['username']).first()
+        if user:
+            return render_template('dashboard.html', username=user.username, total_recycled=user.total_recycled, points=user.points)
     return redirect(url_for('home'))
+
 
 @app.route("/logout")
 def logout():
