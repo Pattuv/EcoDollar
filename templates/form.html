@@ -54,6 +54,7 @@
       action="/submit_recycling"
       method="POST"
       enctype="multipart/form-data"
+      id="recycling-form"
     >
       <!-- Material Type -->
       <div class="mb-3 center-container">
@@ -173,10 +174,25 @@
         ></textarea>
       </div>
 
+      <!-- Email -->
+      <div class="mb-3 center-container">
+        <label for="email" class="form-label">Your Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          placeholder="Example: your.email@example.com"
+          required
+        />
+      </div>
+
       <p>
         <em
           >Forms may take up to 24 hours to be validated. <br />
-          Once validated, the points will be added to your account.</em
+          Once validated, the points will be added to your account. <br />
+          You will receive an email in the case that <br />
+          your form was declined.</em
         >
       </p>
 
@@ -192,7 +208,7 @@
 
       <!-- Submit Button -->
       <div class="mb-3 center-container">
-        <button type="submit" class="btn btn-brand" disabled>
+        <button type="submit" class="btn btn-brand" id="submit-btn" disabled>
           Submit Recycling Data
         </button>
       </div>
@@ -203,7 +219,8 @@
       const pointsDisplay = document.getElementById("points");
       const weightError = document.getElementById("weight-error");
       const weightLimitSpan = document.getElementById("weight-limit");
-      const submitButton = document.querySelector("button[type='submit']");
+      const submitButton = document.getElementById("submit-btn");
+      const form = document.getElementById("recycling-form");
 
       const maxWeight = 5000; // Maximum allowable weight
       weightLimitSpan.textContent = maxWeight;
@@ -217,7 +234,7 @@
           submitButton.disabled = true;
         } else {
           weightError.style.display = "none";
-          submitButton.disabled = false;
+          checkFormCompletion();
         }
 
         // Update points dynamically if weight is valid
@@ -226,6 +243,15 @@
           pointsDisplay.textContent = points;
         }
       });
+
+      // Check if all fields are filled
+      function checkFormCompletion() {
+        const isFormValid =
+          form.checkValidity() &&
+          weightInput.value &&
+          document.getElementById("proof").files.length > 0;
+        submitButton.disabled = !isFormValid;
+      }
 
       let isSidebarOpen = false;
 
@@ -246,6 +272,12 @@
 
         isSidebarOpen = !isSidebarOpen;
       }
+
+      // Listen for form changes to check if all fields are filled
+      form.addEventListener("input", checkFormCompletion);
+      document
+        .getElementById("proof")
+        .addEventListener("change", checkFormCompletion);
     </script>
   </body>
 </html>

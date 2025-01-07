@@ -59,10 +59,11 @@ def submit_recycling():
     weight = int(request.form["weight"])  # Make sure weight is treated as an integer
     location = request.form["location"]
     description = request.form["description"]
+    email = request.form["email"]  # Get the user's email
     proof_file = request.files["proof"]
 
     try:
-        # Compose email
+        # Compose email to admin
         msg = Message(
             "New Recycling Submission",
             recipients=["ecodollara@gmail.com"]  # Admin email
@@ -73,8 +74,9 @@ def submit_recycling():
         <p><strong>Weight:</strong> {weight} grams</p>
         <p><strong>Drop-off Location:</strong> {location}</p>
         <p><strong>Description:</strong> {description}</p>
+        <p><strong>Submitter's Email:</strong> {email}</p>
         <p>Please review and validate this submission:</p>
-        <a href="{url_for('accept', username=username, weight=weight, _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:green; border-radius:5px;">Accept</a>
+        <a href="{url_for('accept', username=username, weight=weight, email=email, _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:green; border-radius:5px;">Accept</a>
         <a href="{url_for('dashboard', _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:red; border-radius:5px; margin-left:10px;">Decline</a>
         """
 
@@ -95,13 +97,15 @@ def submit_recycling():
         return f"Error: {e}"
 
 
+
 @app.route("/accept")
 def accept():
-    # Get the username and weight from the URL query parameters
+    # Get the username, weight, and email from the URL query parameters
     username = request.args.get("username")
     weight = int(request.args.get("weight"))
+    email = request.args.get("email")
 
-    if not username or weight <= 0:
+    if not username or weight <= 0 or not email:
         return "Invalid submission data", 400
 
     # Retrieve the user from the database
@@ -113,10 +117,27 @@ def accept():
         user.points += weight // 10  # Points can be calculated, for example, 1 point for every 100 grams
         db.session.commit()
 
+        # Send a confirmation email to the submitter
+        confirmation_msg = Message(
+            "Recycling Submission Accepted",
+            recipients=[email]  # Send the confirmation to the user's email
+        )
+        confirmation_msg.html = f"""
+        <h2>Your recycling submission has been accepted!</h2>
+        <p>We are happy to inform you that your recycling submission of {weight} grams has been successfully accepted.</p>
+        <p>You have earned {weight // 10} points for your submission. Keep up the good work!</p>
+        <p>Thank you for helping us recycle!</p>
+        <p>Best Regards, EcoDollar Team.</p>
+        """
+        
+        # Send the confirmation email
+        mail.send(confirmation_msg)
+
         # Redirect to the user's dashboard or a confirmation page
         return render_template('accepted.html')
     else:
         return "User not found", 404
+
 
 
 
