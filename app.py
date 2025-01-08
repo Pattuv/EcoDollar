@@ -23,7 +23,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'ecodollarformsender@gmail.com'   # Default 
 mail = Mail(app)
 
 # Database Configuration
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_NOTIFICATIONS"] = False
 db = SQLAlchemy(app)
 
