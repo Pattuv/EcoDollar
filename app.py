@@ -77,8 +77,17 @@ def submit_recycling():
         <p><strong>Submitter's Email:</strong> {email}</p>
         <p>Please review and validate this submission:</p>
         <a href="{url_for('accept', username=username, weight=weight, email=email, _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:green; border-radius:5px;">Accept</a>
-        <a href="{url_for('dashboard', _external=True)}" style="text-decoration:none; padding:10px 20px; color:white; background-color:red; border-radius:5px; margin-left:10px;">Decline</a>
+
+        <!-- Decline Form -->
+        <form action="{url_for('decline', _external=True)}" method="POST" style="display:inline;">
+            <label for="decline">Send a Decline Message if you are declining:</label>
+            <textarea name="decline" required></textarea>
+            <input type="hidden" name="username" value="{username}">
+            <input type="hidden" name="email" value="{email}">
+            <button type="submit" style="padding:10px 20px; color:white; background-color:red; border-radius:5px; margin-left:10px;">Decline</button>
+        </form>
         """
+
 
         # Attach the proof file (image or PDF)
         if proof_file:
@@ -123,20 +132,44 @@ def accept():
             recipients=[email]  # Send the confirmation to the user's email
         )
         confirmation_msg.html = f"""
-        <h2>Your recycling submission has been accepted!</h2>
+        <h2>{username}, your recycling submission has been accepted!</h2>
         <p>We are happy to inform you that your recycling submission of {weight} grams has been successfully accepted.</p>
         <p>You have earned {weight // 10} points for your submission. Keep up the good work!</p>
         <p>Thank you for helping us recycle!</p>
         <p>Best Regards, EcoDollar Team.</p>
         """
-        
         # Send the confirmation email
         mail.send(confirmation_msg)
 
         # Redirect to the user's dashboard or a confirmation page
-        return render_template('accepted.html')
+        return render_template('validate.html')
     else:
         return "User not found", 404
+
+
+@app.route('/decline', methods=["POST"])
+def decline():
+    # Get the decline message and other parameters from the form
+    decline_message = request.form.get('decline')
+    username = request.form.get("username")
+    email = request.form.get("email")
+
+    # Send the decline confirmation message
+    confirmation_msg = Message(
+        "Recycling Submission Declined",
+        recipients=[email]  # Send the confirmation to the user's email
+    )
+    confirmation_msg.html = f"""
+    <h2>Sorry {username}, your form was declined.</h2>
+    <p>Here's why:</p>
+    <p>Admin Said: {decline_message}</p>
+    <p>Please review this and resubmit the form so it meets all requirements.</p>   
+    <p>Best Regards, EcoDollar Team.</p>
+    """
+    mail.send(confirmation_msg)
+
+    # Redirect to the validation page
+    return render_template('validate.html')
 
 
 
