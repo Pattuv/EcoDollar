@@ -3,7 +3,7 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
-import os
+import os   
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 
@@ -11,6 +11,8 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = "tsaslc2025"
+
+
 
 # Email Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Gmail SMTP server
@@ -27,12 +29,13 @@ mail = Mail(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_NOTIFICATIONS"] = False
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 class User(db.Model):
     __tablename__ = 'user' 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
-    password_hash = db.Column(db.String(150), nullable=False)
+    password_hash = db.Column(db.String(225), nullable=False)
     total_recycled = db.Column(db.Integer, default=0)  # Field to track total recycled
     points = db.Column(db.Integer, default=0)  # Field to track points
 
