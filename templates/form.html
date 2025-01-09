@@ -20,6 +20,11 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='form.css') }}"
     />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='assets/favicon.png') }}"
+      type="image/png"
+    />
   </head>
   <body>
     <button id="menu-btn" class="menu-btn" onclick="toggleSidebar()">
@@ -40,7 +45,7 @@
       </div>
       <a href="/dashboard">Dashboard</a>
       <a href="#profile">Store</a>
-      <a href="#settings">Badges</a>
+      <a href="#settings">Share</a>
       <a href="{{url_for('logout')}}">
         <button class="btn btn-primary btn-brand w-100">Log Out</button>
       </a>
