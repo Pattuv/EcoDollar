@@ -29,15 +29,6 @@ body {
   transform: scale(1.05);
   border-color: rgb(122, 255, 122) !important;
 }
-.navbar {
-  background-color: rgb(122, 255, 122);
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-}
 
 .welcome {
   margin-top: 20px;
