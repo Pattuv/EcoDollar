@@ -226,7 +226,7 @@ def dashboard():
     if "username" in session:
         user = User.query.filter_by(username=session['username']).first()
         if user:
-            return render_template('dashboard.html', username=user.username, total_recycled=user.total_recycled, points=user.points)
+            return render_template('redesign.html', username=user.username, total_recycled=user.total_recycled, points=user.points)
     return redirect(url_for('home'))
 
 

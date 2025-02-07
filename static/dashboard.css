@@ -79,6 +79,8 @@ body {
   border-radius: 5px;
   z-index: 1001;
   transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  color: black !important;
+  text-decoration: none !important;
 }
 .menu-btn:hover {
   background-color: rgb(102, 235, 102);
@@ -95,11 +97,6 @@ body {
   text-align: center;
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
-}
-
-.menu-btn {
-  color: black !important;
-  text-decoration: none !important;
 }
 
 .card-title {
@@ -139,6 +136,15 @@ body {
 
 .card {
   border-radius: 30px;
+}
+
+.dashboard-page {
+  text-align: left;
+}
+
+.logo {
+  text-decoration: none !important;
+  color: black !important;
 }
 
 @media (max-width: 1024px) {

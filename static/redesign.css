@@ -1,0 +1,79 @@
+body {
+  font-family: "Afacad Flux", sans-serif !important;
+}
+
+.btn-brand {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-width: 1.75px;
+  border-color: rgb(122, 255, 122);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-brand:hover {
+  background-color: rgb(122, 255, 122);
+  color: black !important;
+  transform: scale(1.05);
+  border-color: rgb(122, 255, 122) !important;
+}
+.btn-brand:active {
+  background-color: rgb(122, 255, 122) !important;
+  color: rgb(0, 0, 0) !important;
+  transform: scale(1.1);
+  border-color: rgb(122, 255, 122) !important;
+}
+
+.btn-brand:focus {
+  background-color: rgb(122, 255, 122);
+  color: black !important;
+  transform: scale(1.05);
+  border-color: rgb(122, 255, 122) !important;
+}
+
+.welcome {
+  margin-top: 20px;
+}
+
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.logo {
+  text-decoration: none !important;
+  color: black !important;
+}
+.brand-logo img {
+  margin-top: -7px;
+  vertical-align: middle;
+}
+.brand-logo {
+  font-size: 28px !important;
+  text-align: center;
+  color: rgb(122, 255, 122) !important;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.sidebar {
+  background-color: #fafffa !important;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+}
+
+.topbar {
+  border-bottom: 1px solid #ddd;
+}
+
+.btn-sidebar {
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.btn-sidebar:hover {
+  background-color: rgb(122, 255, 122);
+}
+
+.lowbar {
+  margin-top: 15vw;
+}
