@@ -13,22 +13,23 @@ body {
 .btn-custom:hover {
   background-color: rgb(122, 255, 122);
   color: black !important;
-  transform: scale(1.05);
+
   border-color: rgb(122, 255, 122) !important;
 }
 .btn-custom:active {
   background-color: rgb(122, 255, 122) !important;
   color: rgb(0, 0, 0) !important;
-  transform: scale(1.1);
+
   border-color: rgb(122, 255, 122) !important;
 }
 
 .btn-custom:focus {
   background-color: rgb(122, 255, 122);
   color: black !important;
-  transform: scale(1.05);
+
   border-color: rgb(122, 255, 122) !important;
 }
+
 .navbar-brand {
   font-size: 30px;
   margin-top: 0;
@@ -53,7 +54,7 @@ body {
 .heading {
   margin-top: 100px;
   margin-bottom: 5vw;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .center-cont {
@@ -68,9 +69,7 @@ body {
 }
 
 .btn-brand {
-  width: 250px;
-  height: 75px;
-  border-radius: 10px;
+  width: 150px;
   background-color: rgb(122, 255, 122);
   color: rgb(0, 0, 0);
   border-width: 1.75px;
@@ -78,23 +77,46 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .btn-brand:hover {
-  background-color: rgb(122, 255, 122);
   color: black !important;
-  transform: scale(1.05);
   border-color: rgb(122, 255, 122) !important;
+  background-color: #ceffce;
 }
 .btn-brand:active {
-  background-color: rgb(122, 255, 122) !important;
+  background-color: #ceffce !important;
   color: rgb(0, 0, 0) !important;
-  transform: scale(1.1);
   border-color: rgb(122, 255, 122) !important;
 }
 
 .btn-brand:focus {
-  background-color: rgb(122, 255, 122);
+  background-color: #ceffce;
   color: black !important;
-  transform: scale(1.05);
   border-color: rgb(122, 255, 122) !important;
+}
+
+.btn-demo {
+  width: 150px;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border: 1.75px solid rgb(122, 255, 122);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  margin-left: 10px;
+}
+
+.btn-demo:hover {
+  color: black !important;
+  background-color: white;
+  border: 1.75px solid rgb(0, 255, 0) !important; /* Explicitly set border color */
+  box-shadow: 0 0 4px 1px rgb(0, 255, 0); /* Smooth transition effect */
+}
+
+.btn-demo:active,
+.btn-demo:focus {
+  background-color: white !important;
+  color: black !important;
+  border: 1.75px solid rgb(122, 255, 122) !important; /* Keep border consistent */
+  box-shadow: none; /* Remove extra styling */
+  outline: none; /* Prevent default browser outline */
 }
 
 #moreinfo {
