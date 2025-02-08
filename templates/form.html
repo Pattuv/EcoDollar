@@ -27,32 +27,6 @@
     />
   </head>
   <body>
-    <button id="menu-btn" class="menu-btn" onclick="toggleSidebar()">
-      ☰ Menu
-    </button>
-
-    <div id="sidebar" class="sidebar">
-      <div class="brand-logo">
-        <a href="/">
-          <img
-            src="{{ url_for('static', filename='assets/favicon.png') }}"
-            alt="EcoDollar Logo"
-            width="30"
-            height="30"
-          />
-          EcoDollar
-        </a>
-      </div>
-      <a href="/dashboard">Dashboard</a>
-      <a href="#profile">Store</a>
-      <a href="#settings">Share</a>
-      <a href="{{url_for('logout')}}">
-        <button class="btn btn-primary btn-brand w-100">Log Out</button>
-      </a>
-    </div>
-
-    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
-
     <h1 style="margin-top: 20px; margin-bottom: 40px">Recycling Form</h1>
 
     <form

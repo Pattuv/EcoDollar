@@ -55,7 +55,7 @@ a {
 }
 
 .sidebar {
-  background-color: #fafffa !important;
+  background-color: white !important;
   height: 100vh;
   border-right: 1px solid #ddd;
 }
@@ -71,9 +71,34 @@ a {
 }
 
 .btn-sidebar:hover {
-  background-color: rgb(122, 255, 122);
+  background-color: #ceffce;
 }
 
 .lowbar {
   margin-top: 15vw;
+}
+
+.sidebar-toggle:hover {
+  background-color: #ceffce !important;
+  color: black !important;
+}
+
+.card {
+  text-align: center;
+}
+.nmb {
+  margin-bottom: 0;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.btn-nice {
+  background-color: #ceffce;
+  border: solid 2px black;
+}
+
+.btn-nice:hover {
+  background-color: #ceffce;
 }
