@@ -3,6 +3,11 @@ body {
   text-align: center;
 }
 
+::selection {
+  background-color: #ceffce; /* Changes the background color of highlighted text */
+  color: black; /* Changes the color of the highlighted text */
+}
+
 .btn-custom {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
