@@ -102,3 +102,22 @@ a {
 .btn-nice:hover {
   background-color: #ceffce;
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height */
+}
+
+.topbar {
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.list-unstyled {
+  flex-grow: 1; /* Pushes .lowbar to the bottom */
+}
+
+.lowbar {
+  flex-shrink: 0; /* Prevent shrinking */
+  margin-top: auto; /* Push it to the bottom */
+}
