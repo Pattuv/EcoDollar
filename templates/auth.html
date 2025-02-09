@@ -25,30 +25,77 @@
     />
     <link
       rel="icon"
-      href="{{ url_for('static', filename='assets/favicon.png') }} "
+      href="{{ url_for('static', filename='assets/favicon.png') }}"
       type="image/png"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='auth.css') }} "
+      href="{{ url_for('static', filename='auth.css') }}"
     />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .login-card {
+        width: 360px;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .lowbar {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 14px;
+        color: gray;
+      }
+
+      .btn-outline-custom {
+        color: white;
+        border-color: lightgray;
+        border-left: none;
+        border-top-right-radius: 7px !important;
+        border-bottom-right-radius: 7px !important;
+      }
+
+      .btn-outline-custom:hover {
+        background-color: rgb(240, 240, 240);
+      }
+
+      #eye-icon {
+        color: black;
+      }
+    </style>
   </head>
   <body>
     <div class="login-card">
       <div class="brand-logo">
         <a class="navbar-brand" href="/">
           <img
-            src="{{ url_for('static', filename='assets/favicon.png') }} "
+            src="{{ url_for('static', filename='assets/favicon.png') }}"
             alt=""
             width="30"
             height="30"
             class="d-inline-block align-text-top"
-            style="margin-top: 8px; margin-right: 5px"
-          />EcoDollar</a
-        >
+            style="margin-top: 9px"
+          />
+          EcoDollar
+        </a>
       </div>
 
-      <!-- Show Error Message if any -->
+      <p class="text-center">
+        By registering and using our application, you consent to our Terms of
+        Service and Privacy Policy.
+      </p>
+
       {% if error %}
       <div class="alert alert-danger" role="alert">{{ error }}</div>
       {% endif %}
@@ -83,27 +130,6 @@
             >
               <i class="fas fa-eye" id="eye-icon"></i>
             </button>
-
-            <style>
-              .btn-outline-custom {
-                background-color: rgb(
-                  122,
-                  255,
-                  122
-                ); /* Custom background color */
-                color: white; /* Custom text color */
-                border-color: lightgray; /* Custom border color */
-                border-top-right-radius: 7px !important; /* Keep the border radius */
-                border-bottom-right-radius: 7px !important; /* Keep the border radius */
-              }
-
-              .btn-outline-custom:hover {
-                background-color: rgb(98, 204, 98); /* Hover background color */
-              }
-              #eye-icon {
-                color: black; /* Set the icon color to black */
-              }
-            </style>
           </div>
         </div>
 
@@ -121,19 +147,20 @@
       </form>
     </div>
 
+    <div class="lowbar">ecodollara@gmail.com ● Contact Us</div>
+
     <script>
       // Function to toggle password visibility
       function togglePasswordVisibility() {
         var passwordField = document.getElementById("password");
         var eyeIcon = document.getElementById("eye-icon");
 
-        // Toggle between password and text
         if (passwordField.type === "password") {
-          passwordField.type = "text"; // Show password
+          passwordField.type = "text";
           eyeIcon.classList.remove("fa-eye");
           eyeIcon.classList.add("fa-eye-slash");
         } else {
-          passwordField.type = "password"; // Hide password
+          passwordField.type = "password";
           eyeIcon.classList.remove("fa-eye-slash");
           eyeIcon.classList.add("fa-eye");
         }

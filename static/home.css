@@ -75,27 +75,27 @@ body {
 
 .btn-brand {
   width: 150px;
-  background-color: rgb(122, 255, 122);
+  background-color: rgb(159, 255, 159);
   color: rgb(0, 0, 0);
   border-width: 1.75px;
-  border-color: rgb(122, 255, 122);
+  border-color: rgb(0, 255, 0);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .btn-brand:hover {
   color: black !important;
-  border-color: rgb(122, 255, 122) !important;
+  border-color: rgb(0, 255, 0) !important;
   background-color: #ceffce;
 }
 .btn-brand:active {
   background-color: #ceffce !important;
   color: rgb(0, 0, 0) !important;
-  border-color: rgb(122, 255, 122) !important;
+  border-color: rgb(0, 255, 0) !important;
 }
 
 .btn-brand:focus {
   background-color: #ceffce;
   color: black !important;
-  border-color: rgb(122, 255, 122) !important;
+  border-color: rgb(0, 255, 0) !important;
 }
 
 .btn-demo {
