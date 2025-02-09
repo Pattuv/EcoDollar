@@ -1,6 +1,7 @@
 body {
   font-family: "Afacad Flux", sans-serif;
   text-align: center;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 ::selection {
