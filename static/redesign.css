@@ -148,21 +148,45 @@ a {
 }
 
 .btn-danger {
-  background-color: rgb(255, 86, 86);
+  background-color: rgba(255, 0, 0, 0.55);
   border-color: red;
+  border-width: 1.75px;
 }
 
 .btn-danger:hover {
-  background-color: rgb(255, 122, 122);
+  background-color: rgba(255, 0, 0, 0.45);
   border-color: red;
 }
 
 .btn-dark {
-  background-color: rgb(66, 66, 66);
+  background-color: rgba(0, 0, 0, 0.65);
   border-color: black;
 }
 
 .btn-dark:hover {
-  background-color: rgb(75, 75, 75);
+  background-color: rgba(0, 0, 0, 0.6);
   border-color: black;
+  border-width: 1.75px;
+}
+
+.btn-light {
+  border: solid 1.75px lightgray;
+}
+
+.btn-light:hover {
+  background-color: #ffffff;
+}
+
+.btn {
+  border-width: 1.75px;
+}
+
+.recyclecard {
+  border-color: rgb(255, 142, 160);
+  color: rgb(255, 142, 160);
+}
+
+.pointscard {
+  border-color: rgb(121, 206, 255);
+  color: rgb(121, 206, 255);
 }
