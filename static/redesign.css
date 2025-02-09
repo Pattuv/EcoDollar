@@ -3,30 +3,27 @@ body {
 }
 
 .btn-brand {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(159, 255, 159);
   color: rgb(0, 0, 0);
   border-width: 1.75px;
-  border-color: rgb(122, 255, 122);
+  border-color: rgb(0, 255, 0);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .btn-brand:hover {
-  background-color: rgb(122, 255, 122);
   color: black !important;
-  transform: scale(1.05);
-  border-color: rgb(122, 255, 122) !important;
+  border-color: rgb(0, 255, 0) !important;
+  background-color: #ceffce;
 }
 .btn-brand:active {
-  background-color: rgb(122, 255, 122) !important;
+  background-color: #ceffce !important;
   color: rgb(0, 0, 0) !important;
-  transform: scale(1.1);
-  border-color: rgb(122, 255, 122) !important;
+  border-color: rgb(0, 255, 0) !important;
 }
 
 .btn-brand:focus {
-  background-color: rgb(122, 255, 122);
+  background-color: #ceffce;
   color: black !important;
-  transform: scale(1.05);
-  border-color: rgb(122, 255, 122) !important;
+  border-color: rgb(0, 255, 0) !important;
 }
 
 .welcome {
@@ -120,4 +117,52 @@ a {
 .lowbar {
   flex-shrink: 0; /* Prevent shrinking */
   margin-top: auto; /* Push it to the bottom */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+.dropdown-content a {
+  transform: translateY(10px);
+  transition: transform 0.3s ease-in-out;
+}
+.dropdown:hover .dropdown-content a {
+  transform: translateY(0);
+}
+
+.btn-danger {
+  background-color: rgb(255, 86, 86);
+  border-color: red;
+}
+
+.btn-danger:hover {
+  background-color: rgb(255, 122, 122);
+  border-color: red;
+}
+
+.btn-dark {
+  background-color: rgb(66, 66, 66);
+  border-color: black;
+}
+
+.btn-dark:hover {
+  background-color: rgb(75, 75, 75);
+  border-color: black;
 }
