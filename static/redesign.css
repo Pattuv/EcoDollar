@@ -2,6 +2,14 @@ body {
   font-family: "Afacad Flux", sans-serif !important;
 }
 
+.sidebar {
+  width: 320px;
+}
+
+.main-page {
+  margin-left: 320px;
+}
+
 .btn-brand {
   background-color: rgb(159, 255, 159);
   color: rgb(0, 0, 0);
@@ -177,16 +185,28 @@ a {
   background-color: #ffffff;
 }
 
+.btn-primary {
+  background-color: rgb(13, 109, 253, 0.65);
+  color: black;
+}
+
+.btn-primary:hover {
+  background-color: rgb(13, 109, 253, 0.55);
+  color: black;
+}
+
 .btn {
   border-width: 1.75px;
 }
 
 .recyclecard {
-  border-color: rgb(255, 142, 160);
-  color: rgb(255, 142, 160);
+  border-color: rgb(64, 201, 0);
 }
 
 .pointscard {
-  border-color: rgb(121, 206, 255);
-  color: rgb(121, 206, 255);
+  border-color: rgb(64, 201, 0);
+}
+
+.card {
+  border-width: 1.75px;
 }
