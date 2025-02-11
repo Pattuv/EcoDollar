@@ -27,9 +27,21 @@
           href="{{ url_for('static', filename='dashboard.css') }}"
         />
 <body style="text-align: center;">
-    <p class="display-1">Thank You!</p>
-    <p class="display-5">Your form is being validated.</p>
+  <div class="brand-logo">
+    <a href="/" class="logo" style="margin-left: 10px">
+      <img
+        src="{{ url_for('static', filename='assets/favicon.png') }}"
+        alt="EcoDollar Logo"
+        width="30"
+        height="30"
+      />
+      EcoDollar
+    </a>
+  </div>
+    <p class="display-4">Dear {{username}},</p>
+    <p class="display-6">Your form is being validated.</p>
+    <p class="fs-5">Best Regards, <br> EcoDollar Team</p>
 
-    <a href="/dashboard" class="btn btn-primary btn-brand">Dashboard</a>
+    <a href="/dashboard" class="btn btn-primary btn-brand">Return to Dashboard</a>
 </body>
 </html>

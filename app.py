@@ -181,7 +181,11 @@ def decline():
 
 @app.route("/thank_you")
 def thank_you():
-    return render_template('thanks.html')
+    if "username" in session:
+        user = User.query.filter_by(username=session['username']).first()
+        if user:
+            return render_template('thanks.html', username=user.username, total_recycled=user.total_recycled, points=user.points)
+    return redirect(url_for('home'))
 
 @app.route("/form")
 def form():
