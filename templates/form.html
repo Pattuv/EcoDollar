@@ -30,10 +30,10 @@
       type="image/png"
     />
   </head>
-  <body>
+  <body class="form-body">
     <div class="container-fluid form-cont">
-      <div class="row">
-        <div class="col-md-3 bg-light p-3 sidebar position-fixed">
+      <div class="row scroll-row">
+        <div class="col-md-3 bg-light p-3 sidebar">
           <div class="d-flex justify-content-between align-items-center topbar">
             <!-- Brand Logo (left aligned) -->
             <div class="brand-logo">
@@ -58,27 +58,27 @@
           </div>
           <ul class="list-unstyled">
             <li>
-              <a class="btn btn-sidebar" href="/dashboard">
+              <a class="btn btn-sidebar dashboard" href="/dashboard">
                 <i class="bi bi-menu-button-wide-fill"></i> Dashboard</a
               >
             </li>
             <li>
-              <a class="btn btn-sidebar" href="/form"
+              <a class="btn btn-sidebar form form-active" href="/form"
                 ><i class="bi bi-ui-radios"></i> Recycling Form</a
               >
             </li>
             <li>
-              <a class="btn btn-sidebar"
+              <a class="btn btn-sidebar store"
                 ><i class="bi bi-bag-fill"></i> Store</a
               >
             </li>
             <li>
-              <a class="btn btn-sidebar"
+              <a class="btn btn-sidebar map"
                 ><i class="bi bi-geo-alt-fill"></i> Map</a
               >
             </li>
             <li>
-              <a class="btn btn-sidebar"
+              <a class="btn btn-sidebar board"
                 ><i class="bi bi-clipboard-data-fill"></i> Leaderboard</a
               >
             </li>
@@ -96,7 +96,7 @@
                 </button>
               </li>
               <li>
-                <a class="btn btn-sidebar"
+                <a class="btn btn-sidebar settings"
                   ><i class="bi bi-gear-wide-connected"></i> Settings</a
                 >
               </li>
@@ -104,8 +104,13 @@
           </div>
         </div>
 
-        <div class="col-md-9 p-4 main-page">
+        <div class="col-md-9 p-4 scroll-main-page">
           <h1>Recycling Form</h1>
+
+          <button class="btn btn-primary marker">
+            *Use this form to record recycling data and earn points!
+          </button>
+
           <form
             action="/submit_recycling"
             method="POST"
@@ -196,7 +201,7 @@
               <select
                 id="location"
                 name="location"
-                class="form-select"
+                class="form-select form-control"
                 required
               >
                 <option value="" disabled selected>Select one</option>

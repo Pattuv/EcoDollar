@@ -1,18 +1,29 @@
 body {
   font-family: "Afacad Flux", sans-serif !important;
-  background-color: #ceffce15;
+  overflow: hidden;
 }
 
-.form-cont {
-  background-color: rgba(13, 109, 253, 0.075);
+.form-body {
+  background-color: rgba(13, 109, 253, 0.055);
 }
 
 .sidebar {
-  width: 320px;
+  width: 275px;
 }
 
 .main-page {
-  margin-left: 320px;
+  flex-grow: 1;
+  overflow-y: auto; /* Enable scrolling only in this div */
+  overflow-x: auto;
+  height: 100vh;
+  padding: 20px;
+}
+
+.scroll-main-page {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable scrolling only in this div */
+  height: 100vh;
+  padding: 20px;
 }
 
 .btn-brand {
@@ -81,7 +92,27 @@ a {
 }
 
 .btn-sidebar:hover {
+  background-color: #dfdfdf;
+}
+
+.dashboard:hover {
   background-color: #ceffce;
+}
+
+.form:hover {
+  background-color: rgba(13, 109, 253, 0.185);
+}
+
+.store:hover {
+  background-color: #ff91005e;
+}
+
+.map:hover {
+  background-color: #9900ff46;
+}
+
+.board:hover {
+  background-color: rgba(255, 0, 0, 0.377);
 }
 
 .lowbar {
@@ -184,10 +215,11 @@ a {
 
 .btn-light {
   border: solid 1.75px lightgray;
+  background-color: white;
 }
 
 .btn-light:hover {
-  background-color: #ffffff;
+  background-color: rgb(238, 238, 238);
 }
 
 .btn-primary {
@@ -214,4 +246,58 @@ a {
 
 .card {
   border-width: 1.75px;
+}
+
+.scroll-row {
+  display: flex;
+  flex-wrap: nowrap; /* Prevents wrapping */
+  height: 100vh; /* Ensure it takes full height */
+}
+
+.form-control {
+  border-radius: 5px;
+  width: 30vw;
+}
+
+.marker {
+  background-color: rgba(255, 0, 0, 0);
+  margin-bottom: 10px;
+  user-select: none;
+  display: inline;
+  cursor: default;
+}
+
+.marker:hover {
+  background-color: rgba(255, 0, 0, 0);
+  cursor: default;
+}
+
+.marker:active {
+  background-color: rgba(255, 0, 0, 0) !important;
+  color: black !important;
+  cursor: default;
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+
+.dash-active {
+  background-color: #ceffce;
+}
+
+.form-active {
+  background-color: rgba(13, 109, 253, 0.185);
+}
+
+.store-active {
+  background-color: #ff91005e;
+}
+
+.map-active {
+  background-color: #9900ff46;
+}
+
+.board-active {
+  background-color: rgba(255, 0, 0, 0.377);
 }
