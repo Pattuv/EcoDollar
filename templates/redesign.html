@@ -35,7 +35,7 @@
   <body>
     <div class="container-fluid dashboard-cont">
       <div class="row">
-        <div class="col-md-3 bg-light p-3 sidebar">
+        <div class="col-md-3 bg-light p-3 sidebar" id="sidebar">
           <div class="d-flex justify-content-between align-items-center topbar">
             <!-- Brand Logo (left aligned) -->
             <div class="brand-logo">
@@ -54,8 +54,10 @@
             <button
               class="btn btn-outline-dark sidebar-toggle"
               id="sidebar-toggle"
+              data-bs-toggle="collapse"
+              data-bs-target="#sidebar"
             >
-              <i class="bi bi-list"></i>
+              <i class="bi bi-x"></i>
             </button>
           </div>
           <ul class="list-unstyled">
@@ -64,28 +66,28 @@
                 class="btn btn-sidebar dashboard dash-active"
                 href="/dashboard"
               >
-                <i class="bi bi-menu-button-wide-fill"></i> Dashboard</a
-              >
+                <i class="bi bi-menu-button-wide-fill"></i> Dashboard
+              </a>
             </li>
             <li>
-              <a class="btn btn-sidebar form" href="/form"
-                ><i class="bi bi-ui-radios"></i> Recycling Form</a
-              >
+              <a class="btn btn-sidebar form" href="/form">
+                <i class="bi bi-ui-radios"></i> Recycling Form
+              </a>
             </li>
             <li>
-              <a class="btn btn-sidebar store"
-                ><i class="bi bi-bag-fill"></i> Store</a
-              >
+              <a class="btn btn-sidebar store">
+                <i class="bi bi-bag-fill"></i> Store
+              </a>
             </li>
             <li>
-              <a class="btn btn-sidebar map"
-                ><i class="bi bi-geo-alt-fill"></i> Map</a
-              >
+              <a class="btn btn-sidebar map">
+                <i class="bi bi-geo-alt-fill"></i> Map
+              </a>
             </li>
             <li>
-              <a class="btn btn-sidebar board"
-                ><i class="bi bi-clipboard-data-fill"></i> Leaderboard</a
-              >
+              <a class="btn btn-sidebar board">
+                <i class="bi bi-clipboard-data-fill"></i> Leaderboard
+              </a>
             </li>
           </ul>
 
@@ -101,9 +103,9 @@
                 </button>
               </li>
               <li>
-                <a class="btn btn-sidebar settings"
-                  ><i class="bi bi-gear-wide-connected"></i> Settings</a
-                >
+                <a class="btn btn-sidebar settings">
+                  <i class="bi bi-gear-wide-connected"></i> Settings
+                </a>
               </li>
             </ul>
           </div>
@@ -113,14 +115,22 @@
         <div class="col-md-9 dashboard-page main-page">
           <div class="container">
             <div class="row align-items-center">
-              <div class="col-6">
+              <!-- Welcome text -->
+              <div class="col-12 col-md-6">
                 <h1 style="margin-bottom: 0px">Welcome, {{username}}</h1>
                 <p class="fs-5" id="datetime"></p>
               </div>
-              <div class="col-6 d-flex justify-content-end">
-                <div>
-                  <button class="btn btn-light">Share Dashboard</button>
-                </div>
+
+              <!-- Menu button -->
+              <div class="col-12 col-md-6 d-flex justify-content-end">
+                <button
+                  class="btn btn-light sidebar-toggle"
+                  id="sidebar-toggle"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#sidebar"
+                >
+                  Menu
+                </button>
               </div>
             </div>
           </div>

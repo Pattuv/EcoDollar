@@ -13,8 +13,8 @@ body {
 
 .main-page {
   flex-grow: 1;
-  overflow-y: auto; /* Enable scrolling only in this div */
-  overflow-x: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh;
   padding: 20px;
 }
@@ -24,6 +24,13 @@ body {
   overflow-y: auto; /* Enable scrolling only in this div */
   height: 100vh;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-center-button {
+  align-self: flex-start; /* Align the button to the left (you can use other values like flex-end or center) */
 }
 
 .btn-brand {
@@ -119,7 +126,7 @@ a {
   margin-top: 15vw;
 }
 
-.sidebar-toggle:hover {
+.btn-outline-dark:hover {
   background-color: #ceffce !important;
   color: black !important;
 }
