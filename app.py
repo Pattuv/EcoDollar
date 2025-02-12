@@ -245,7 +245,12 @@ def home():
 
 @app.route("/store")
 def store():
-    return render_template('store.html')
+    if "username" in session:
+        user = User.query.filter_by(username=session['username']).first()
+        if user:
+            return render_template('store.html', username=user.username, total_recycled=user.total_recycled, points=user.points)
+    return redirect(url_for('home'))
+
 
 if __name__ == "__main__":
     with app.app_context():
