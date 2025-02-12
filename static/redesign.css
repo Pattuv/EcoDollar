@@ -7,6 +7,90 @@ body {
   background-color: rgba(13, 109, 253, 0.055);
 }
 
+.store-body {
+  background-color: #ff91000e;
+}
+/* Custom styles for the badge cards */
+.badge-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.badge {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+  background-color: #cccccc; /* Default color */
+}
+
+.badge-info {
+  margin-top: 10px;
+}
+
+.badge-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.buy-badge {
+  width: 100%;
+}
+
+.btn-sidebar {
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.btn-sidebar:hover {
+  background-color: #dfdfdf;
+}
+
+.dashboard:hover {
+  background-color: #ceffce;
+}
+
+.form:hover {
+  background-color: rgba(13, 109, 253, 0.185);
+}
+
+.store:hover {
+  background-color: #ff91005e;
+}
+
+.map:hover {
+  background-color: #9900ff46;
+}
+
+.board:hover {
+  background-color: rgba(255, 0, 0, 0.377);
+}
+
+.dash-active {
+  background-color: #ceffce;
+}
+
+.form-active {
+  background-color: rgba(13, 109, 253, 0.185);
+}
+
+.store-active {
+  background-color: #ff91005e;
+}
+
+.map-active {
+  background-color: #9900ff46;
+}
+
+.board-active {
+  background-color: rgba(255, 0, 0, 0.377);
+}
+
 .sidebar {
   width: 275px;
 }
@@ -90,36 +174,6 @@ a {
 
 .topbar {
   border-bottom: 1px solid #ddd;
-}
-
-.btn-sidebar {
-  width: 100%;
-  text-align: left;
-  margin-top: 10px;
-}
-
-.btn-sidebar:hover {
-  background-color: #dfdfdf;
-}
-
-.dashboard:hover {
-  background-color: #ceffce;
-}
-
-.form:hover {
-  background-color: rgba(13, 109, 253, 0.185);
-}
-
-.store:hover {
-  background-color: #ff91005e;
-}
-
-.map:hover {
-  background-color: #9900ff46;
-}
-
-.board:hover {
-  background-color: rgba(255, 0, 0, 0.377);
 }
 
 .lowbar {
@@ -287,24 +341,4 @@ a {
 
 .form-check-input {
   cursor: pointer;
-}
-
-.dash-active {
-  background-color: #ceffce;
-}
-
-.form-active {
-  background-color: rgba(13, 109, 253, 0.185);
-}
-
-.store-active {
-  background-color: #ff91005e;
-}
-
-.map-active {
-  background-color: #9900ff46;
-}
-
-.board-active {
-  background-color: rgba(255, 0, 0, 0.377);
 }
