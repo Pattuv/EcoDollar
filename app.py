@@ -251,6 +251,10 @@ def store():
             return render_template('store.html', username=user.username, total_recycled=user.total_recycled, points=user.points)
     return redirect(url_for('home'))
 
+@app.route('/leaderboard')
+def leaderboard():
+    return render_template('leaderboard.html')
+
 
 if __name__ == "__main__":
     with app.app_context():

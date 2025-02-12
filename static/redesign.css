@@ -10,6 +10,10 @@ body {
 .store-body {
   background-color: #ff91000e;
 }
+
+.board-body {
+  background-color: rgba(255, 0, 0, 0.096);
+}
 /* Custom styles for the badge cards */
 .badge-card {
   background-color: #f8f9fa;
@@ -92,6 +96,10 @@ body {
 
 .board-active {
   background-color: rgba(255, 0, 0, 0.377);
+}
+
+.btn-purple {
+  border-color: #9900ff46 !important;
 }
 
 .sidebar {
@@ -329,6 +337,7 @@ a {
   user-select: none;
   display: inline;
   cursor: default;
+  color: black;
 }
 
 .marker:hover {
