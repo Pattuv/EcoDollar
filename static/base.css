@@ -4,6 +4,11 @@ body {
   margin-left: 60px;
 }
 
+.nod {
+  text-decoration: none;
+  color: black;
+}
+
 .btn-brand {
   width: 150px;
   background-color: rgb(159, 255, 159);

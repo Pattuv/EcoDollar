@@ -253,11 +253,12 @@ def store():
 
 @app.route('/leaderboard')
 def leaderboard():
-    return render_template('leaderboard.html')
+    top_users = User.query.order_by(User.total_recycled.desc()).limit(50).all()
+    return render_template('leaderboard.html', users=top_users)
 
 @app.route('/map')
 def map():
-    return render_template('map.html    ')
+    return render_template('map.html')
 
 
 if __name__ == "__main__":
