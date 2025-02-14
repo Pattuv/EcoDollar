@@ -255,6 +255,10 @@ def store():
 def leaderboard():
     return render_template('leaderboard.html')
 
+@app.route('/map')
+def map():
+    return render_template('map.html    ')
+
 
 if __name__ == "__main__":
     with app.app_context():

@@ -46,29 +46,6 @@ body {
   font-weight: bold;
 }
 
-.sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: white;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-  z-index: 1000;
-  border-right: 1px solid #ddd;
-}
-.sidebar a {
-  padding: 10px 15px;
-  text-decoration: none;
-  color: black;
-  display: block;
-  transition: 0.3s;
-}
-.sidebar a:hover {
-  background-color: #f0f0f0;
-}
 .overlay {
   position: fixed;
   top: 0;

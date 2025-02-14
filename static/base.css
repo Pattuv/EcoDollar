@@ -125,8 +125,9 @@ body {
 }
 
 .btn-light {
-  border: solid 1.75px lightgray;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  border: solid 1px grey;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .btn-light:hover {
@@ -152,4 +153,17 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   display: none;
+}
+
+.brand-logo img {
+  margin-top: -7px;
+  vertical-align: middle;
+}
+.brand-logo {
+  font-size: 28px !important;
+  text-align: center;
+  color: rgb(122, 255, 122) !important;
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
 }
