@@ -189,7 +189,11 @@ def thank_you():
 
 @app.route("/form")
 def form():
-    return render_template('form.html')
+    if "username" in session:
+        user = User.query.filter_by(username=session['username']).first()
+        if user:
+            return render_template('form.html')
+    return redirect(url_for('home'))
 
 @app.route("/auth")
 def auth():
@@ -230,8 +234,18 @@ def dashboard():
     if "username" in session:
         user = User.query.filter_by(username=session['username']).first()
         if user:
-            return render_template('dashboard.html', username=user.username, total_recycled=user.total_recycled, points=user.points)
+            # Calculate rank correctly
+            rank = db.session.query(User).filter(User.total_recycled > user.total_recycled).count() + 1
+            
+            return render_template(
+                'dashboard.html', 
+                username=user.username, 
+                total_recycled=user.total_recycled, 
+                points=user.points, 
+                rank=rank
+            )
     return redirect(url_for('home'))
+
 
 
 @app.route("/logout")
@@ -243,22 +257,26 @@ def logout():
 def home():
     return render_template('home.html')
 
-@app.route("/store")
-def store():
-    if "username" in session:
-        user = User.query.filter_by(username=session['username']).first()
-        if user:
-            return render_template('store.html', username=user.username, total_recycled=user.total_recycled, points=user.points)
-    return redirect(url_for('home'))
+
 
 @app.route('/leaderboard')
 def leaderboard():
-    top_users = User.query.order_by(User.total_recycled.desc()).limit(50).all()
-    return render_template('leaderboard.html', users=top_users)
+    if "username" in session:
+        user = User.query.filter_by(username=session['username']).first()
+        top_users = User.query.order_by(User.total_recycled.desc()).limit(50).all()
+        if user:
+            return render_template('leaderboard.html', users=top_users)
+    return redirect(url_for('home'))
+    
+    
 
 @app.route('/map')
 def map():
-    return render_template('map.html')
+    if "username" in session:
+        user = User.query.filter_by(username=session['username']).first()
+        if user:
+            return render_template('map.html')
+    return redirect(url_for('home'))
 
 
 if __name__ == "__main__":
