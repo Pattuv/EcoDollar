@@ -24,182 +24,195 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      href="{{ url_for('static', filename='redesign.css') }}"
     />
-
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='redesign.css') }}"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
     />
   </head>
   <body>
-    <div class="container-fluid dashboard-cont">
-      <div class="row">
-        <div class="col-md-3 bg-light p-3 sidebar" id="sidebar">
-          <div class="d-flex justify-content-between align-items-center topbar">
-            <!-- Brand Logo (left aligned) -->
-            <div class="brand-logo">
-              <a href="/" class="logo" style="margin-left: 10px">
-                <img
-                  src="{{ url_for('static', filename='assets/favicon.png') }}"
-                  alt="EcoDollar Logo"
-                  width="30"
-                  height="30"
-                />
-                EcoDollar
-              </a>
-            </div>
-
-            <!-- Sidebar Toggle Button (right aligned) -->
-            <button
-              class="btn btn-outline-dark sidebar-toggle"
-              id="sidebar-toggle"
-              data-bs-toggle="collapse"
-              data-bs-target="#sidebar"
-            >
-              <i class="bi bi-x"></i>
-            </button>
-          </div>
-          <ul class="list-unstyled">
-            <li>
-              <a
-                class="btn btn-sidebar dashboard dash-active"
-                href="/dashboard"
-              >
-                <i class="bi bi-menu-button-wide-fill"></i> Dashboard
-              </a>
-            </li>
-            <li>
-              <a class="btn btn-sidebar form" href="/form">
-                <i class="bi bi-ui-radios"></i> Recycling Form
-              </a>
-            </li>
-            <li>
-              <a class="btn btn-sidebar store" href="/store">
-                <i class="bi bi-bag-fill"></i> Store
-              </a>
-            </li>
-            <li>
-              <a class="btn btn-sidebar board" href="/leaderboard">
-                <i class="bi bi-clipboard-data-fill"></i> Leaderboard
-              </a>
-            </li>
-            <li>
-              <button
-                id="openPopup"
-                class="btn btn-light"
-                style="margin-left: 9px; margin-top: 5px"
-              >
-                <i class="bi bi-three-dots text-lg"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Main Content -->
-        <div class="col-md-9 dashboard-page main-page">
-          <div class="container">
-            <div class="row align-items-center">
-              <!-- Welcome text -->
-              <div class="col-12 col-md-6">
-                <h1 style="margin-bottom: 0px">Welcome, {{username}}</h1>
-                <p class="fs-5" id="datetime"></p>
-              </div>
-
-              <!-- Menu button -->
-              <div class="col-12 col-md-6 d-flex justify-content-end">
-                <button
-                  class="btn btn-light sidebar-toggle"
-                  id="sidebar-toggle"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#sidebar"
-                >
-                  Menu
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="container">
-            <div class="row">
-              <div class="col-6">
-                <div class="card-cont">
-                  Total Recycled
-                  <div class="card recyclecard">
-                    <p class="fs-3 nmb">You have recycled:</p>
-                    <p class="display-2 nmb bold">{{ total_recycled }}</p>
-                    <p class="fs-3">Grams</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="card-cont">
-                  Points
-                  <div class="card pointscard">
-                    <p class="fs-3 nmb">You have:</p>
-                    <p class="display-2 nmb bold">{{ points }}</p>
-                    <p class="fs-3">Points</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="sidebar">
+      <div class="brand-logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='assets/favicon.png') }}"
+            alt="EcoDollar Logo"
+            width="30"
+            height="30"
+            style="margin-right: 15px; margin-top: 1px; margin-left: 5px"
+          />
+          EcoDollar
+        </a>
       </div>
-    </div>
+      <a href="/dashboard"><i class="bi bi-house-door"></i> <span>Dashboard</span></a>
+      <a href="#"><i class="bi bi-code-square"></i></i> <span>Recycling Form</span></a>
+      <a href="#"><i class="bi bi-bar-chart"></i> <span>Leaderboard</span></a>
+      <a href="#"><i class="bi bi-compass"></i> <span>Map</span></a>
 
-    <!-- Popup Container (Initially Hidden) -->
-    <div
-      id="popup"
-      class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
+      <button
+      id="openPopup"
+      class="btn btn-light"
+      style="margin-left: 9px; margin-top: 5px"
     >
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div
-          class="bg-white p-4 rounded shadow-lg text-center"
-          style="width: 300px"
-        >
-          <button class="btn btn-light w-100 mb-2">About Us</button>
-          <button class="btn btn-light w-100 mb-2">Contacts</button>
-          <button class="btn btn-light w-100 mb-2">Watch a Demo</button>
-          <a href="/logout" class="btn btn-danger w-100 mb-2">Logout</a>
-          <button id="closePopup" class="btn btn-dark w-100">Close</button>
+      <i class="bi bi-three-dots text-lg"></i>
+    </button>
+    
+    </div>
+    <p class="display-6" style="margin-bottom: 0">Welcome, {{username}}</p>
+    <p>Friday, February 14, 2025</p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Total Recycled</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">This is the total amount you've ever recycled.</p>
+            <p class="main-dash-text">{{total_recycled}}</p>
+            <p class="main-big-text">Grams</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Global Rank</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">How much do you recycle compared to the rest of the world?</p>
+            <p class="main-dash-text">#217</p>
+            <p class="main-big-text">Globally</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Weekly Goal</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">Set goals for yourself to climb the ranks!</p>
+            <p class="card-title" style="margin-bottom: 0px;">You need to recycle:</p>
+            <p class="main-dash-text" style="margin-top: 0;">{{total_recycled}}</p>
+            <p class="main-big-text">Grams</p>
+            <button class="btn btn-brand">Set a Goal</button>
+
+          </div>
         </div>
       </div>
     </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const openPopup = document.getElementById("openPopup");
-        const closePopup = document.getElementById("closePopup");
-        const popup = document.getElementById("popup");
+    
 
-        openPopup.addEventListener("click", function () {
-          popup.classList.remove("d-none"); // Show popup
-        });
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Recycling Form</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">Use this form to start recording your recycling.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Map</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">Don't know where to recycle? Use our Maps feature to find a recycling center near you!</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Leaderboard</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">Compete against the world.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        closePopup.addEventListener("click", function () {
-          popup.classList.add("d-none"); // Hide popup
-        });
 
-        // Close popup when clicking outside the modal content
-        popup.addEventListener("click", function (e) {
-          if (e.target === popup) {
-            popup.classList.add("d-none");
-          }
-        });
+
+
+    <div
+    id="popup"
+    class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
+  >
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div
+        class="bg-white p-4 rounded shadow-lg text-center"
+        style="width: 300px"
+      >
+        <button class="btn btn-light w-100 mb-2">About Us</button>
+        <button class="btn btn-light w-100 mb-2">Contacts</button>
+        <button class="btn btn-light w-100 mb-2">Watch a Demo</button>
+        <a href="/logout" class="btn btn-danger w-100 mb-2">Logout</a>
+        <button id="closePopup" class="btn btn-dark w-100">Close</button>
+      </div>
+    </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const openPopup = document.getElementById("openPopup");
+      const closePopup = document.getElementById("closePopup");
+      const popup = document.getElementById("popup");
+
+      openPopup.addEventListener("click", function () {
+        popup.classList.remove("d-none"); // Show popup
       });
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      function updateDateTime() {
-        const now = new Date();
-        const formattedDateTime = now.toLocaleString(); // Adjust formatting as needed
-        document.getElementById("datetime").textContent = formattedDateTime;
-      }
+      closePopup.addEventListener("click", function () {
+        popup.classList.add("d-none"); // Hide popup
+      });
 
-      setInterval(updateDateTime, 1000); // Update every second
-      updateDateTime(); // Call once to avoid delay
-    </script>
+      // Close popup when clicking outside the modal content
+      popup.addEventListener("click", function (e) {
+        if (e.target === popup) {
+          popup.classList.add("d-none");
+        }
+      });
+    });
+  </script>
   </body>
 </html>

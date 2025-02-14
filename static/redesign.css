@@ -1,134 +1,11 @@
 body {
   font-family: "Afacad Flux", sans-serif !important;
-  overflow: hidden;
-}
-
-.form-body {
-  background-color: rgba(13, 109, 253, 0.055);
-}
-
-.store-body {
-  background-color: #ff91000e;
-}
-
-.board-body {
-  background-color: rgba(255, 0, 0, 0.096);
-}
-/* Custom styles for the badge cards */
-.badge-card {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
-}
-
-.badge {
-  font-size: 1rem;
-
-  margin: 0 auto;
-  display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  color: white;
-  font-weight: bold;
-  color: black;
-}
-
-.badge-info {
-  margin-top: 10px;
-}
-
-.badge-price {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.buy-badge {
-  width: 100%;
-}
-
-.btn-sidebar {
-  width: 100%;
-  text-align: left;
-  margin-top: 10px;
-}
-
-.btn-sidebar:hover {
-  background-color: #dfdfdf;
-}
-
-.dashboard:hover {
-  background-color: #ceffce;
-}
-
-.form:hover {
-  background-color: rgba(13, 109, 253, 0.185);
-}
-
-.store:hover {
-  background-color: #ff91005e;
-}
-
-.map:hover {
-  background-color: #9900ff46;
-}
-
-.board:hover {
-  background-color: rgba(255, 0, 0, 0.377);
-}
-
-.dash-active {
-  background-color: #ceffce;
-}
-
-.form-active {
-  background-color: rgba(13, 109, 253, 0.185);
-}
-
-.store-active {
-  background-color: #ff91005e;
-}
-
-.map-active {
-  background-color: #9900ff46;
-}
-
-.board-active {
-  background-color: rgba(255, 0, 0, 0.377);
-}
-
-.btn-purple {
-  border-color: #9900ff46 !important;
-}
-
-.sidebar {
-  width: 275px;
-}
-
-.main-page {
-  flex-grow: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 100vh;
-  padding: 20px;
-}
-
-.scroll-main-page {
-  flex-grow: 1;
-  overflow-y: auto; /* Enable scrolling only in this div */
-  height: 100vh;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.no-center-button {
-  align-self: flex-start; /* Align the button to the left (you can use other values like flex-end or center) */
+  text-align: center;
+  margin-left: 60px;
 }
 
 .btn-brand {
+  width: 150px;
   background-color: rgb(159, 255, 159);
   color: rgb(0, 0, 0);
   border-width: 1.75px;
@@ -156,111 +33,73 @@ body {
   margin-top: 20px;
 }
 
-a {
-  text-decoration: none !important;
-  color: black !important;
-}
-
-.logo {
-  text-decoration: none !important;
-  color: black !important;
-}
-.brand-logo img {
-  margin-top: -7px;
-  vertical-align: middle;
-}
-.brand-logo {
-  font-size: 28px !important;
-  text-align: center;
-  color: rgb(122, 255, 122) !important;
-  text-align: center;
-  padding: 10px 0;
-}
-
 .sidebar {
-  background-color: white !important;
+  position: fixed;
+  left: 0;
+  top: 0;
   height: 100vh;
-  border-right: 1px solid #ddd;
+  width: 65px; /* Skinny by default */
+  background: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  transition: width 0.3s ease-in-out; /* Smooth expansion */
+  padding-top: 20px;
+  z-index: 1000;
 }
 
-.topbar {
-  border-bottom: 1px solid #ddd;
+#openPopup:hover {
+  width: 175px;
 }
 
-.lowbar {
-  margin-top: 15vw;
+.sidebar:hover {
+  width: 200px; /* Expands on hover */
 }
 
-.btn-outline-dark:hover {
-  background-color: #ceffce !important;
-  color: black !important;
+#openPopup {
+  width: 175px;
 }
 
-.card {
+/* Sidebar links */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  padding: 15px;
+  white-space: nowrap; /* Prevents text wrapping */
+  transition: background 0.3s ease-in-out;
+}
+
+.sidebar a:hover {
+  background: #f1f1f1;
+}
+
+/* Icon styles */
+.sidebar i {
+  font-size: 20px;
+  min-width: 40px; /* Ensures consistent spacing */
   text-align: center;
 }
-.nmb {
-  margin-bottom: 0;
-}
 
-.bold {
-  font-weight: 600;
-}
-
-.btn-nice {
-  background-color: #ceffce;
-  border: solid 2px black;
-}
-
-.btn-nice:hover {
-  background-color: #ceffce;
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; /* Full height */
-}
-
-.topbar {
-  flex-shrink: 0; /* Prevent shrinking */
-}
-
-.list-unstyled {
-  flex-grow: 1; /* Pushes .lowbar to the bottom */
-}
-
-.lowbar {
-  flex-shrink: 0; /* Prevent shrinking */
-  margin-top: auto; /* Push it to the bottom */
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-content {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* Hide text initially, show when expanded */
+.sidebar span {
   opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
-.dropdown:hover .dropdown-content {
-  opacity: 1;
-  pointer-events: auto;
+
+.sidebar:hover span {
+  opacity: 1; /* Text appears when hovered */
 }
-.dropdown-content a {
-  transform: translateY(10px);
-  transition: transform 0.3s ease-in-out;
+
+/* Page content */
+.content {
+  margin-left: 60px; /* Matches sidebar's initial width */
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
 }
-.dropdown:hover .dropdown-content a {
-  transform: translateY(0);
+
+.sidebar:hover ~ .content {
+  margin-left: 200px; /* Pushes content when sidebar expands */
 }
 
 .btn-danger {
@@ -304,53 +143,125 @@ a {
   color: black;
 }
 
-.btn {
-  border-width: 1.75px;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
 }
-
-.recyclecard {
-  border-color: rgb(64, 201, 0);
+.menu-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: rgb(122, 255, 122);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  z-index: 1001;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  color: black !important;
+  text-decoration: none !important;
 }
-
-.pointscard {
-  border-color: rgb(64, 201, 0);
+.menu-btn:hover {
+  background-color: rgb(102, 235, 102);
+  transform: scale(1.05);
+}
+.brand-logo img {
+  margin-top: -7px;
+  vertical-align: middle;
+}
+.brand-logo {
+  font-size: 28px !important;
+  text-align: center;
+  color: rgb(122, 255, 122) !important;
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .card {
+  text-align: left;
+
+  margin: auto;
+  padding: 20px;
+  padding-top: 5px;
   border-width: 1.75px;
+  transition: border-color 0.3s ease-in-out;
+  margin-bottom: 15px;
 }
 
-.scroll-row {
-  display: flex;
-  flex-wrap: nowrap; /* Prevents wrapping */
-  height: 100vh; /* Ensure it takes full height */
+.card:hover {
+  border-color: #00ff00;
 }
 
-.form-control {
-  border-radius: 5px;
-  width: 30vw;
+.card-title {
+  font-weight: 550;
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
-.marker {
-  background-color: rgba(255, 0, 0, 0);
-  margin-bottom: 10px;
-  user-select: none;
-  display: inline;
-  cursor: default;
-  color: black;
+.card-sub {
+  color: grey;
+  margin-bottom: 0px;
 }
 
-.marker:hover {
-  background-color: rgba(255, 0, 0, 0);
-  cursor: default;
+.main-dash-text {
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 0px;
 }
 
-.marker:active {
-  background-color: rgba(255, 0, 0, 0) !important;
+.main-big-text {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: -15px;
+  margin-left: 3px;
+}
+
+.main {
+  font-size: 40px;
+}
+.submain {
+  font-size: 30px;
+  color: rgb(122, 255, 122);
+  margin-top: -40px;
+}
+
+.tighter-spacing p {
+  margin-bottom: 0; /* Reduce space between all paragraphs */
+}
+
+.tighter-spacing p:last-child {
+  margin-bottom: 0; /* Remove space after the last paragraph */
+}
+
+.dashboard-page {
+  text-align: left;
+}
+
+.logo {
+  text-decoration: none !important;
   color: black !important;
-  cursor: default;
 }
 
-.form-check-input {
-  cursor: pointer;
+.btn-light {
+  border: solid 1px grey;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .main-dash-text {
+    font-weight: 500;
+  }
+
+  .main-big-text {
+    font-weight: 500;
+  }
 }
