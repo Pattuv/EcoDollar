@@ -266,8 +266,13 @@ def leaderboard():
         top_users = User.query.order_by(User.total_recycled.desc()).limit(50).all()
         if user:
             return render_template('leaderboard.html', users=top_users)
-    return redirect(url_for('home'))
+    return redirect(url_for('sharedboard'))
     
+@app.route('/ecodollarleaderboard')
+def sharedboard():
+    top_users = User.query.order_by(User.total_recycled.desc()).limit(50).all()
+    return render_template('sharedboard.html', users=top_users)
+
     
 
 @app.route('/map')

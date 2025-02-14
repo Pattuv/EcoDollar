@@ -72,7 +72,7 @@
 
     <p style="margin: 0;" class="fs-5"> Does the leaderboard feel a bit empty?</p>
    
-    <button class="btn btn-light" style="margin-top: 10px; margin-bottom: 10px;">☆ Invite your friends to EcoDollar ☆</button>
+    <button class="btn btn-light" id="openShare" style="margin-top: 10px; margin-bottom: 10px;">☆ Invite your friends to EcoDollar ☆</button>
 
 
     <table  class="leaderboard">
@@ -98,22 +98,29 @@
 
 
 
-    <div
-    id="popup"
-    class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
-  >
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div
-        class="bg-white p-4 rounded shadow-lg text-center"
-        style="width: 300px"
-      >
-        <button class="btn btn-light w-100 mb-2">About Us</button>
-        <button class="btn btn-light w-100 mb-2">Contacts</button>
-        <button class="btn btn-light w-100 mb-2">Watch a Demo</button>
-        <a href="/logout" class="btn btn-danger w-100 mb-2">Logout</a>
-        <button id="closePopup" class="btn btn-dark w-100">Close</button>
+    <div id="popup" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="bg-white p-4 rounded shadow-lg text-center" style="width: 300px">
+          <button class="btn btn-light w-100 mb-2">About Us</button>
+          <button class="btn btn-light w-100 mb-2">Contacts</button>
+          <button class="btn btn-light w-100 mb-2">Watch a Demo</button>
+          <a href="/logout" class="btn btn-danger w-100 mb-2">Logout</a>
+          <button id="closePopup" class="btn btn-dark w-100">Close</button>
+        </div>
       </div>
     </div>
+    
+    <!-- Move sharepopup outside of popup -->
+    <div id="sharepopup" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="bg-white p-4 rounded shadow-lg text-center" style="width: 300px">
+          <p>Share the below link to invite your friends!</p>
+          <p class="fs-6">https://ecodollar.site/ecodollardashboard</p>
+          <button id="closeShare" class="btn btn-dark w-100">Close</button>
+        </div>
+      </div>
+    </div>
+    
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -137,5 +144,27 @@
       });
     });
   </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const openPopup = document.getElementById("openShare");
+          const closePopup = document.getElementById("closeShare");
+          const popup = document.getElementById("sharepopup");
+    
+          openPopup.addEventListener("click", function () {
+            popup.classList.remove("d-none"); // Show popup
+          });
+    
+          closePopup.addEventListener("click", function () {
+            popup.classList.add("d-none"); // Hide popup
+          });
+    
+          // Close popup when clicking outside the modal content
+          popup.addEventListener("click", function (e) {
+            if (e.target === popup) {
+              popup.classList.add("d-none");
+            }
+          });
+        });
+      </script>
   </body>
 </html>
