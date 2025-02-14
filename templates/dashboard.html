@@ -26,14 +26,17 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='dashboard.css') }}"
     />
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='base.css') }}"
+  />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
   </head>
   <body>
-
-    <button id="menu-btn" class="menu-btn" onclick="toggleSidebar()">
-      ☰ Menu
-    </button>
-
-    <div id="sidebar" class="sidebar">
+    <div class="sidebar">
       <div class="brand-logo">
         <a href="/">
           <img
@@ -41,175 +44,200 @@
             alt="EcoDollar Logo"
             width="30"
             height="30"
+            style="margin-right: 5px; margin-top: 1px; margin-left: 5px"
           />
-          EcoDollar
+          <span>EcoDollar</span>
         </a>
       </div>
-      <a href="#profile">Store</a>
-      <a href="#settings">Share</a>
-      <a href="/form">Recycling Form</a>
-      <a href="{{url_for('logout')}}">
-        <button class="btn btn-primary btn-brand w-100">Log Out</button>
-      </a>
+      <a href="/dashboard"><i class="bi bi-house-door"></i> <span>Dashboard</span></a>
+      <a href="/form"><i class="bi bi-code-square"></i></i> <span>Recycling Form</span></a>
+      <a href="/leaderboard"><i class="bi bi-bar-chart"></i> <span>Leaderboard</span></a>
+      <a href="/goals"><i class="bi bi-star"></i> <span>Goals</span></a>
+      <a href="/map"><i class="bi bi-compass"></i> <span>Map</span></a>
+
+      <span>
+        <button
+        id="openPopup"
+        class="btn btn-light"
+        style="margin-left: 9px; margin-top: 5px"
+      >
+        <i class="bi bi-three-dots text-lg"></i>
+      </button>
+      </span>
+
     </div>
 
-    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
-    <h1 class="welcome">Welcome, {{username}}</h1>
+    <p class="display-6" style="margin-bottom: 0">Welcome, {{username}}</p>
+    <p class="datetime" id="datetime"></p>
 
-    <!-- Dashboard Cards Section -->
-    <div class="container mt-4">
-      <div class="row g-4">
-        <!-- Card 1: How much recycled -->
-        <div class="col-12">
-          <div class="card h-100 shadow p-3">
-            <div class="row g-3">
-              <!-- Text Column -->
-              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-                <div class="px-3">
-                  <h5 class="card-title">Total Recycled</h5>
-                  <p class="card-text">
-                    This is the total amount of trash you've ever recycled.
-                  </p>
-                </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Total Recycled</p>
               </div>
-              <!-- Image Column -->
-              <div class="col-12 col-md-6 justify-content-center  align-items-center  flex-column">
-                <p class="card-text mb-0">You have recycled:</p> <!-- Removed margin-bottom -->
-                <p class="card-text main-big-text mb-0">{{ total_recycled }}</p> <!-- Removed margin-bottom -->
-                <p class="submain mb-0">Grams</p> <!-- Removed margin-bottom -->
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
               </div>
             </div>
+      
+            <p class="card-sub">This is the total amount you've ever recycled.</p>
+            <p class="main-dash-text">{{total_recycled}}</p>
+            <p class="main-big-text">Grams</p>
           </div>
         </div>
-
-        <div class="col-12">
-          <div class="card h-100 shadow p-3">
-            <div class="row g-3">
-              <!-- Text Column -->
-              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-                <div class="px-3">
-                  <h5 class="card-title">Points</h5>
-                  <p class="card-text">
-                    The amount of points you currently have.
-                  </p>
-                </div>
+        <div class="col-md-6">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Global Rank</p>
               </div>
-              <!-- Image Column -->
-              <div class="col-12 col-md-6 justify-content-center  align-items-center  flex-column">
-                <p class="card-text mb-0">You have earned:</p> <!-- Removed margin-bottom -->
-                <p class="card-text main-big-text mb-0">{{ points }}</p> <!-- Removed margin-bottom -->
-                <p class="submain mb-0">Points</p> <!-- Removed margin-bottom -->
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
               </div>
             </div>
+      
+            <p class="card-sub">How much do you recycle compared to the rest of the world?</p>
+            <p class="main-dash-text">#217</p>
+            <p class="main-big-text">Globally</p>
           </div>
         </div>
-        
-        
-        
-        
-        
-
-
-
-
-
-
-        
-        <div class="col-12 col-md-6">
-          <div class="card h-100 shadow">
-            <div class="card-body text-center">
-              <h5 class="card-title">Daily Challenge</h5>
-              <p class="card-text" style="margin-bottom: 5px">
-                Todays Daily Challenge:
-              </p>
-              <p class="card-text main">Recycle 10 plastic bottles.</p>
-              <p class="card-text">
-                Complete the Daily Challenge to unlock medals and earn extra
-                points!
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6">
-          <div class="card h-100 shadow p-3">
-            <div class="row g-3">
-              <!-- Text Column -->
-              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-                <div class="px-3">
-                  <h5 class="card-title">Recycle</h5>
-                  <p class="card-text">
-                    Recycle and record it using our Recycling Form! This is how you start earning medals and points.
-                  </p>
-                  <a href="/form" class="btn btn-primary btn-brand">Recycling Form</a>
-                </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Weekly Goal</p>
               </div>
-
-              <div class="col-12 col-md-6 justify-content-center align-items-center flex-column">
-                <img
-                  src="{{ url_for('static', filename='assets/Recycling Form.png') }}"
-                  alt="Descriptive Alt Text"
-                  class="img-fluid"
-                  style="max-width: 100%; height: auto; max-height: 200px; border-radius: 10px;"
-                />
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
               </div>
             </div>
-          </div>
-        </div>
+      
+            <p class="card-sub">Set goals for yourself to climb the ranks!</p>
+            <p class="card-title" style="margin-bottom: 0px;">You need to recycle:</p>
+            <p class="main-dash-text" style="margin-top: 0;">{{total_recycled}}</p>
+            <p class="main-big-text">Grams</p>
+            <button class="btn btn-brand">Set a Goal</button>
 
-        <div class="col-12">
-          <div class="card h-100 shadow p-3">
-            <div class="row g-3">
-              <!-- Text Column -->
-              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-                <div class="px-3">
-                  <h5 class="card-title">Don't Know Where to Recycle?</h5>
-                  <p class="card-text">
-                    Use our maps feature to find plants near you.
-                  </p>
-                  <a href="#" class="btn btn-primary btn-brand">Find Plants Near Me</a>
-                </div>
-              </div>
-              <!-- Image Column -->
-              <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-                <img
-                  src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg"
-                  alt="Descriptive Alt Text"
-                  class="img-fluid"
-                  style="max-width: 100%; height: auto; max-height: 450px; border-radius: 50px;"
-                />
-              </div>
-            </div>
           </div>
-        </div>
-        
-
         </div>
       </div>
     </div>
 
-    <script>
-      let isSidebarOpen = false;
+    
 
-      function toggleSidebar() {
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
-        const menuBtn = document.getElementById("menu-btn");
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Recycling Form</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">Use this form to start recording your recycling.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Map</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">Don't know where to recycle? Use our Maps feature to find a recycling center near you!</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card container">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Leaderboard</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">Compete against the world.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        if (isSidebarOpen) {
-          sidebar.style.width = "0";
-          overlay.style.display = "none";
-          menuBtn.textContent = "☰ Menu";
-        } else {
-          sidebar.style.width = "250px";
-          overlay.style.display = "block";
-          menuBtn.textContent = "✖ Close";
+
+
+
+    <div
+    id="popup"
+    class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
+  >
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div
+        class="bg-white p-4 rounded shadow-lg text-center"
+        style="width: 300px"
+      >
+        <button class="btn btn-light w-100 mb-2">About Us</button>
+        <button class="btn btn-light w-100 mb-2">Contacts</button>
+        <button class="btn btn-light w-100 mb-2">Watch a Demo</button>
+        <a href="/logout" class="btn btn-danger w-100 mb-2">Logout</a>
+        <button id="closePopup" class="btn btn-dark w-100">Close</button>
+      </div>
+    </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const openPopup = document.getElementById("openPopup");
+      const closePopup = document.getElementById("closePopup");
+      const popup = document.getElementById("popup");
+
+      openPopup.addEventListener("click", function () {
+        popup.classList.remove("d-none"); // Show popup
+      });
+
+      closePopup.addEventListener("click", function () {
+        popup.classList.add("d-none"); // Hide popup
+      });
+
+      // Close popup when clicking outside the modal content
+      popup.addEventListener("click", function (e) {
+        if (e.target === popup) {
+          popup.classList.add("d-none");
         }
-
-        isSidebarOpen = !isSidebarOpen;
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const datetimeElement = document.getElementById("datetime");
+  
+      // Function to format the date as "Day, Month Day, Year"
+      function formatDate() {
+        const today = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return today.toLocaleDateString('en-US', options);
       }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  
+      // Set the formatted date to the datetime element
+      datetimeElement.textContent = formatDate();
+    });
+  </script>
+  
   </body>
 </html>
