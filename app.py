@@ -276,13 +276,7 @@ def sharedboard():
 
     
 
-@app.route('/map')
-def map():
-    if "username" in session:
-        user = User.query.filter_by(username=session['username']).first()
-        if user:
-            return render_template('map.html')
-    return redirect(url_for('home'))
+
 
 
 if __name__ == "__main__":

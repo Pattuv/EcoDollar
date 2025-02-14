@@ -111,3 +111,13 @@ body {
 .center-container .form-control {
   width: 350px; /* Ensures the input takes the full width of the container */
 }
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .center-container .form-control {
+    width: 200px; /* Ensures the input takes the full width of the container */
+  }
+  label {
+    margin-left: 20px;
+  }
+}
