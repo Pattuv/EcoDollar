@@ -265,7 +265,8 @@ def leaderboard():
         user = User.query.filter_by(username=session['username']).first()
         top_users = User.query.order_by(User.total_recycled.desc()).limit(50).all()
         if user:
-            return render_template('leaderboard.html', users=top_users)
+            rank = db.session.query(User).filter(User.total_recycled > user.total_recycled).count() + 1
+            return render_template('leaderboard.html', users=top_users, rank=rank)
     return redirect(url_for('sharedboard'))
     
 @app.route('/ecodollarleaderboard')
