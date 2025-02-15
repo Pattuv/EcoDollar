@@ -4,8 +4,8 @@ body {
 }
 
 ::selection {
-  background-color: #ceffce; /* Changes the background color of highlighted text */
-  color: black; /* Changes the color of the highlighted text */
+  background-color: #ceffce;
+  color: black;
 }
 
 .btn-custom {
@@ -47,10 +47,10 @@ body {
 
 .img {
   width: 37vw;
-  height: auto; /* Maintains aspect ratio */
+  height: auto;
   border-radius: 5vw;
-  object-fit: cover; /* Ensures image covers the container without distortion */
-  object-position: center; /* Centers the image */
+  object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: 768px) {
@@ -111,17 +111,17 @@ body {
 .btn-demo:hover {
   color: black !important;
   background-color: white;
-  border: 1.75px solid rgb(0, 255, 0) !important; /* Explicitly set border color */
-  box-shadow: 0 0 4px 1px rgb(0, 255, 0); /* Smooth transition effect */
+  border: 1.75px solid rgb(0, 255, 0) !important;
+  box-shadow: 0 0 4px 1px rgb(0, 255, 0);
 }
 
 .btn-demo:active,
 .btn-demo:focus {
   background-color: white !important;
   color: black !important;
-  border: 1.75px solid rgb(122, 255, 122) !important; /* Keep border consistent */
-  box-shadow: none; /* Remove extra styling */
-  outline: none; /* Prevent default browser outline */
+  border: 1.75px solid rgb(122, 255, 122) !important;
+  box-shadow: none;
+  outline: none;
 }
 
 #moreinfo {
@@ -228,12 +228,13 @@ body {
     margin-bottom: 5vw;
   }
   .img {
-    width: 80%; /* Increases image size for smaller screens */
-    height: auto; /* Maintains aspect ratio */
-    border-radius: 5vw; /* Adjusts rounding for smaller screens */
+    width: 80%;
+    height: auto;
+    border-radius: 5vw;
     margin-bottom: 5vw;
-  }
-  .main-container {
-    margin-bottom: 5vw;
+
+    .main-container {
+      margin-bottom: 5vw;
+    }
   }
 }

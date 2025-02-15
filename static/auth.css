@@ -53,8 +53,8 @@ body {
 }
 
 .lowbar {
-  flex-shrink: 0; /* Prevent shrinking */
-  margin-top: auto; /* Push it to the bottom */
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 .slogan {

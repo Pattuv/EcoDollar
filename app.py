@@ -15,13 +15,13 @@ app.secret_key = "tsaslc2025"
 
 
 # Email Configuration
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Gmail SMTP server
+app.config['MAIL_SERVER'] = 'smtp.gmail.com' 
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Your Gmail username (stored as environment variable)
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Your Gmail password (stored as environment variable)
-app.config['MAIL_DEFAULT_SENDER'] = 'ecodollarformsender@gmail.com'   # Default sender email
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD') 
+app.config['MAIL_DEFAULT_SENDER'] = 'ecodollarformsender@gmail.com'  
 
 mail = Mail(app)
 
@@ -36,8 +36,8 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
     password_hash = db.Column(db.String(225), nullable=False)
-    total_recycled = db.Column(db.Integer, default=0)  # Field to track total recycled
-    points = db.Column(db.Integer, default=0)  # Field to track points
+    total_recycled = db.Column(db.Integer, default=0)  
+    points = db.Column(db.Integer, default=0)  
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -48,7 +48,7 @@ class User(db.Model):
     def add_recycling(self, weight):
         """Update total recycled and points when a recycling submission is made"""
         self.total_recycled += weight
-        self.points += weight // 100  # You can adjust this formula as needed
+        self.points += weight // 100 
         db.session.commit()
 
 
@@ -57,21 +57,21 @@ class User(db.Model):
 @app.route("/submit_recycling", methods=["POST"])
 def submit_recycling():
     if "username" not in session:
-        return redirect(url_for('auth'))  # Ensure user is logged in
+        return redirect(url_for('auth')) 
 
-    username = session["username"]  # Get the logged-in username
+    username = session["username"] 
     materials = request.form.getlist("materials")
-    weight = int(request.form["weight"])  # Make sure weight is treated as an integer
+    weight = int(request.form["weight"]) 
     location = request.form["location"]
     description = request.form["description"]
-    email = request.form["email"]  # Get the user's email
+    email = request.form["email"]  
     proof_file = request.files["proof"]
 
     try:
         # Compose email to admin
         msg = Message(
             "New Recycling Submission",
-            recipients=["ecodollara@gmail.com"]  # Admin email
+            recipients=["ecodollara@gmail.com"] 
         )
         msg.html = f"""
         <h2>Recycling submission from user: {username}</h2>
@@ -122,19 +122,19 @@ def accept():
     if not username or weight <= 0 or not email:
         return "Invalid submission data", 400
 
-    # Retrieve the user from the database
+
     user = User.query.filter_by(username=username).first()
 
     if user:
-        # Update the user's total recycled and points
+
         user.total_recycled += weight
-        user.points += weight // 10  # Points can be calculated, for example, 1 point for every 100 grams
+        user.points += weight // 10  
         db.session.commit()
 
-        # Send a confirmation email to the submitter
+
         confirmation_msg = Message(
             "Recycling Submission Accepted",
-            recipients=[email]  # Send the confirmation to the user's email
+            recipients=[email] 
         )
         confirmation_msg.html = f"""
         <h2>{username}, your recycling submission has been accepted!</h2>
@@ -143,10 +143,10 @@ def accept():
         <p>Thank you for helping us recycle!</p>
         <p>Best Regards, EcoDollar Team.</p>
         """
-        # Send the confirmation email
+
         mail.send(confirmation_msg)
 
-        # Redirect to the user's dashboard or a confirmation page
+
         return render_template('validate.html')
     else:
         return "User not found", 404
@@ -162,7 +162,7 @@ def decline():
     # Send the decline confirmation message
     confirmation_msg = Message(
         "Recycling Submission Declined",
-        recipients=[email]  # Send the confirmation to the user's email
+        recipients=[email] 
     )
     confirmation_msg.html = f"""
     <h2>Sorry {username}, your form was declined.</h2>
@@ -234,7 +234,7 @@ def dashboard():
     if "username" in session:
         user = User.query.filter_by(username=session['username']).first()
         if user:
-            # Calculate rank correctly
+  
             rank = db.session.query(User).filter(User.total_recycled > user.total_recycled).count() + 1
             
             return render_template(

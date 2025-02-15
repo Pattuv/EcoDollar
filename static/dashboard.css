@@ -62,11 +62,11 @@ body {
 }
 
 .tighter-spacing p {
-  margin-bottom: 0; /* Reduce space between all paragraphs */
+  margin-bottom: 0;
 }
 
 .tighter-spacing p:last-child {
-  margin-bottom: 0; /* Remove space after the last paragraph */
+  margin-bottom: 0;
 }
 
 .dashboard-page {

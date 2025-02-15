@@ -6,10 +6,6 @@ body {
   align-items: center;
 }
 
-.form-body {
-  background-color: rgba(13, 109, 253, 0.066);
-}
-
 .btn-brand {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
@@ -98,24 +94,24 @@ body {
 
 .center-container {
   display: flex;
-  flex-direction: column; /* Stacks label and input vertically */
-  align-items: center; /* Centers the entire form horizontally */
+  flex-direction: column;
+  align-items: center;
 }
 
 .center-container .form-label {
-  width: 100%; /* Ensures the label spans the full width of the container */
-  text-align: left; /* Aligns the label's text to the left */
-  margin-bottom: 5px; /* Adds spacing between the label and the input */
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5px;
 }
 
 .center-container .form-control {
-  width: 350px; /* Ensures the input takes the full width of the container */
+  width: 350px;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .center-container .form-control {
-    width: 200px; /* Ensures the input takes the full width of the container */
+    width: 200px;
   }
   label {
     margin-left: 20px;
