@@ -51,7 +51,6 @@
       <a href="/dashboard"><i class="bi bi-house-door"></i> <span>Dashboard</span></a>
       <a href="/form"><i class="bi bi-code-square"></i></i> <span>Recycling Form</span></a>
       <a href="/leaderboard"><i class="bi bi-bar-chart"></i> <span>Leaderboard</span></a>
-      <a href="/goals"><i class="bi bi-star"></i> <span>Goals</span></a>
 
       <span>
         <button
@@ -101,29 +100,7 @@
       </div>
     </div>
     
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <a class="card container nod" href="/goals">
-            <div class="row">
-              <div class="col-md-6">
-                <p class="card-title">Weekly Goal</p>
-              </div>
-              <div class="col-md-6 text-end">
-                <i class="bi bi-arrow-right fs-5"></i>
-              </div>
-            </div>
-      
-            <p class="card-sub">Set goals for yourself to climb the ranks!</p>
-            <p class="card-title" style="margin-bottom: 0px;">You need to recycle:</p>
-            <p class="main-dash-text" style="margin-top: 0;">{{total_recycled}}</p>
-            <p class="main-big-text">Grams</p>
-            <button class="btn btn-brand">Set a Goal</button>
 
-          </a>
-        </div>
-      </div>
-    </div>
 
     
 
@@ -160,24 +137,63 @@
       </div>
     </div>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <a class="card container nod" id="openShare">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="card-title">Share</p>
+              </div>
+              <div class="col-md-6 text-end">
+                <i class="bi bi-arrow-right fs-5"></i>
+              </div>
+            </div>
+      
+            <p class="card-sub">Share this application with friends and family.</p>
+          </a>
 
-
-
-    <div
-    id="popup"
-    class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"
-  >
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div
-        class="bg-white p-4 rounded shadow-lg text-center"
-        style="width: 300px"
-      >
-        <button class="btn btn-light w-100 mb-2">About Us</button>
-        <button class="btn btn-light w-100 mb-2">Contacts</button>
-        <a href="/logout" class="btn btn-danger w-100 mb-2">Logout</a>
-        <button id="closePopup" class="btn btn-dark w-100">Close</button>
+        </div>
       </div>
     </div>
+
+
+
+
+
+    <div id="popup" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="bg-white p-4 rounded shadow-lg text-center" style="width: 300px">
+          <button class="btn btn-light w-100 mb-2">About Us</button>
+          <button class="btn btn-light w-100 mb-2">Contacts</button>
+          <a href="/logout" class="btn btn-danger w-100 mb-2">Logout</a>
+          <button id="closePopup" class="btn btn-dark w-100">Close</button>
+        </div>
+      </div>
+    </div>
+    
+
+    <div id="sharepopup" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="bg-white p-4 rounded shadow-lg text-center" style="width: 300px">
+          <p>Share the below link to invite your friends!</p>
+          <div class="d-flex justify-content-center align-items-center flex-column">
+            <p id="shareLink" class="fs-6 mb-2">https://ecodollar.site/ecodollardashboard</p>
+            <button id="copyLink" class="btn btn-primary mb-2">Copy</button>
+          </div>
+          <button id="closeShare" class="btn btn-dark w-100">Close</button>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      document.getElementById("copyLink").addEventListener("click", function () {
+        navigator.clipboard.writeText(document.getElementById("shareLink").textContent)
+          .then(() => alert("Link copied to clipboard!"))
+          .catch(err => console.error("Error copying text: ", err));
+      });
+    </script>
+    
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -186,11 +202,11 @@
       const popup = document.getElementById("popup");
 
       openPopup.addEventListener("click", function () {
-        popup.classList.remove("d-none"); 
+        popup.classList.remove("d-none");
       });
 
       closePopup.addEventListener("click", function () {
-        popup.classList.add("d-none"); 
+        popup.classList.add("d-none");
       });
 
       popup.addEventListener("click", function (e) {
@@ -200,6 +216,27 @@
       });
     });
   </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const openPopup = document.getElementById("openShare");
+          const closePopup = document.getElementById("closeShare");
+          const popup = document.getElementById("sharepopup");
+    
+          openPopup.addEventListener("click", function () {
+            popup.classList.remove("d-none"); 
+          });
+    
+          closePopup.addEventListener("click", function () {
+            popup.classList.add("d-none");
+          });
+    
+          popup.addEventListener("click", function (e) {
+            if (e.target === popup) {
+              popup.classList.add("d-none");
+            }
+          });
+        });
+      </script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const datetimeElement = document.getElementById("datetime");

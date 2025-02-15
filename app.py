@@ -274,11 +274,6 @@ def sharedboard():
     top_users = User.query.order_by(User.total_recycled.desc()).limit(50).all()
     return render_template('sharedboard.html', users=top_users)
 
-    
-
-
-
-
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
