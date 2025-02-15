@@ -1,0 +1,67 @@
+body {
+  font-family: "Afacad Flux", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-card {
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+.brand-logo {
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.form-control {
+  border-radius: 5px;
+}
+.btn-brand {
+  width: 150px;
+  background-color: rgb(159, 255, 159);
+  color: rgb(0, 0, 0);
+  border-width: 1.75px;
+  border-color: rgb(0, 255, 0);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-brand:hover {
+  color: black !important;
+  border-color: rgb(0, 255, 0) !important;
+  background-color: #ceffce;
+}
+.btn-brand:active {
+  background-color: #ceffce !important;
+  color: rgb(0, 0, 0) !important;
+  border-color: rgb(0, 255, 0) !important;
+}
+
+.btn-brand:focus {
+  background-color: #ceffce;
+  color: black !important;
+  border-color: rgb(0, 255, 0) !important;
+}
+
+#password {
+  border-radius: 5px;
+}
+
+.eye:hover {
+  background-color: grey;
+}
+
+.lowbar {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.slogan {
+  color: black;
+  text-align: center;
+}
+
+.text-center {
+  color: rgb(122, 122, 122);
+}
